@@ -10,28 +10,24 @@
 		<link rel="stylesheet" href="/css/common.css" />
 		<script src="/js/vendor/modernizr.js"></script>
 		<style type="text/css">
-			#menu {
-				text-align: center;
+			div {
+				border: 1px solid gray;
 			}
 		</style>
 	</head>
 <body>
+	<%@ include file="/base/header2.jsp" %>
+	<%@ include file="Setting.jsp" %>
+		<div id="theme">
+			<div>노란색</div>
+			<div>빨강색</div>
+			<div>파란색</div>
+			<div>녹색</div>
+			<div>검정색</div>
+		</div>
 	
-	<div id="menu">
-		<input type="button" value="테마 변경" onclick="location.href='Theme.jsp'" class="button"/>
-		<input type="button" value="순서 변경" class="button"/>
-		<input type="button" value="전체 쪽지" class="button"/>
-		<input type="button" value="이름 수정" class="button"/>
-	</div>
-	
+	<%@ include file="/base/footer.jsp" %>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="/js/foundation.min.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
