@@ -19,10 +19,9 @@
 	        <a class="element" href="#">서비스 소개</a>
 	        <a class="element" href="#">지원</a>
 	        
-	        <button class="element place-right">
-	            이진호
-	        </button>
 	        
+	        <a class="element place-right" href="#">Sign Up</a>
+	        <a class="element place-right" href="#">Login</a>
 	        <a class="element place-right" href="#">프로젝트 둘러보기</a>
 	        
 	    </nav>
