@@ -6,7 +6,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Timple</title>
-		<link rel="stylesheet" href="/css/metro-bootstrap.min.css" />
+		<link rel="stylesheet" href="./css/metro-bootstrap.min.css" />
 	</head>
 <body class="metro">
 	<nav class="navigation-bar dark">
