@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <script>
 	function move() {
-		window.open('/base/footer_terms.jsp','_blank',"width=400,height=600,scrollbars=yes,menubar=no,location=no,left=300,top=100");
+		window.open('/base/footer_terms.jsp','_blank',"width=500,height=600,scrollbars=yes,menubar=no,location=no,left=300,top=100");
 		// 졸림.. 자고 내일 다시
 	}
 </script>
