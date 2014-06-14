@@ -35,11 +35,15 @@
 <title>Timple</title>
 </head>
 <body class="metro">
+
 	<%@ include file="/base/header_dropdown.jsp"%>
-
-	템플릿입니다.
-
+<div id="main">	
+	
+		
+	
+	
+	
+</div>
 	<%@ include file="/base/footer.jsp"%>
-
 </body>
 </html>
