@@ -19,8 +19,8 @@
 			
 		</style>
 	</head>
-<body>
-	 <%@ include file = "/base/header.jsp" %>
+<body class="metro">
+	 <%@ include file="/base/header.jsp" %>
 	 
 	 <div id="signUpBox">
 	 	 <h2>팀 프로젝트를 효율적으로 관리해보세요!</h2>
@@ -35,6 +35,10 @@
 	 
 	 </div>
 	 
+	 <%@ include file="/base/footer.jsp" %>
+	 
+	 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	 <script src="/js/metro.min.js"></script>
 	 
 </body>
 </html>

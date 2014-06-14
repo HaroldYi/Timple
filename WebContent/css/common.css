@@ -8,7 +8,7 @@ body { margin: 0px; }
 input { border-radius: 2px; box-shadow: 0 1px #eee; }
 
 /* 임시 header, footer css */
-#footer { font-size: 0.8em; width: auto; height: 80px; background-color: #CCC; padding: 10px; line-height: 80px; }
+#footer { font-size: 0.8em; width: auto; height: 80px; background-color: #CCC; padding: 10px; line-height: 50px; margin-top: 10px; }
 
 
 
