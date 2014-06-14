@@ -17,14 +17,14 @@ input { border-radius: 2px; box-shadow: 0 1px #eee; }
 .footer-nav {
 	/* border: 1px solid red; */
 	display: inline-block;
-	height: 50px;	
+	height: 70px;	
 	cursor: pointer;
 }
 .footer-nav-span {
 	border-right: 1px solid grey; 
 }
 #main {
-	height: 84%;
+	min-height: 84%;
 }
 #footer {
 	margin-bottom: 0px;
