@@ -11,7 +11,7 @@
         <!-- 로그인 안했을 때 -->
         <div class="element">
 	        <a class="dropdown-toggle" href="#">기능 소개</a>
-	        <ul class="dropdown-menu" data-role="dropdown">
+	        <ul class="dropdown-menu dark" data-role="dropdown">
                 <li><a href="#">Main</a></li>
                 <li><a href="#">File Open</a></li>
                 <li class="divider"></li>
@@ -31,7 +31,7 @@
         
         <div class="element place-right">
 	        <a class="dropdown-toggle" href="#">이진호</a>
-	        <ul class="dropdown-menu" data-role="dropdown">
+	        <ul class="dropdown-menu dark" data-role="dropdown">
                 <li><a href="#">Main</a></li>
                 <li><a href="#">File Open</a></li>
                 <li class="divider"></li>
@@ -43,7 +43,7 @@
         
         <div class="element place-right">
 	        <a class="dropdown-toggle" href="#">나의 프로젝트</a>
-	        <ul class="dropdown-menu" data-role="dropdown">
+	        <ul class="dropdown-menu dark" data-role="dropdown">
                 <li><a href="#">Main</a></li>
                 <li><a href="#">File Open</a></li>
                 <li class="divider"></li>
