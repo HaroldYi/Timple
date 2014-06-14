@@ -6,7 +6,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Timple</title>
-		<link rel="stylesheet" href="./css/metro-bootstrap.min.css" />
+		<link rel="stylesheet" href="/css/metro-bootstrap.min.css" />
 	</head>
 <body class="metro">
 	<nav class="navigation-bar dark">
@@ -27,6 +27,6 @@
 	    </nav>
 	</nav>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
- 	<script src="../js/metro.min.js"></script>
+ 	<script src="/js/metro.min.js"></script>
 </body>
 </html>
