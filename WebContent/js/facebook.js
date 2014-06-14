@@ -1,6 +1,16 @@
 /**
- * 필요한 정보가 있으면 이 파일을 link한후 callBack함수는 이름을 resultF로 짓는다.(매개변수는 두개 만들되, 넘어오는 정보1 userId, 정보2 userEmail임)
- * 
+ * 필요한 정보가 있으면 이 파일을 link한후 callBack함수는 이름을 resultF로 짓는다.(매개변수는 두개 만들되, 넘어오는 정보1 userId, 정보2 userEmail임) *
+ * 예시 
+ * <script>
+		function resultF(id,email) {
+			alert(id);
+			alert(email);
+			
+		}
+	</script> 	
+ * 현재 userId와 userEmail을 넘겨주고 있음.
+ * facebook.js는 사용하는 페이지의 link하는 첫번째 js가 되도록 할것.
+ * body태크에 <div id="fb-root"></div>를 붙여 넣을 것.
  */
 	window.onload = function facebookResult() {
 		
