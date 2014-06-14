@@ -35,7 +35,6 @@
 <title>Timple</title>
 </head>
 <body class="metro">
-
 	<%@ include file="/base/header_dropdown.jsp"%>
 <div id="main">	
 	
