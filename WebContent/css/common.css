@@ -14,3 +14,6 @@ input { border-radius: 2px; box-shadow: 0 1px #eee; }
 
 
 /* 공통 css 에 추가하고 싶으시면 이 곳에 적으시고 다른 팀원들에게 알려주세요. */
+.footer-nav {
+	border-right: 1px solid grey; display: inline;	
+}
