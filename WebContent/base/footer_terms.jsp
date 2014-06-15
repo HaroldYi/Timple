@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>이용 약관</title>
+<link href="/css/font.css" rel="stylesheet">
 </head>
 <body>
 <p>
