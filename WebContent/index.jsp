@@ -20,14 +20,14 @@
 		</style>
 	</head>
 <body class="metro">
-	 <%@ include file="/base/header.jsp" %>
+	 <%@ include file="/base/header_dropdown.jsp" %>
 	 
 	 <div id="signUpBox">
 	 	 <h2>팀 프로젝트를 효율적으로 관리해보세요!</h2>
 		 <div class="input-control text">
-		 	<input type="text" placeholder="Email" />
-		 	<input type="text" placeholder="Password" />
-		 	<input type="text" placeholder="Re-enter Password" />
+		 	<input type="email" placeholder="Email" />
+		 	<input type="password" placeholder="Password" />
+		 	<input type="password" placeholder="Re-enter Password" />
 			<input type="button" value="이메일로 10초만에 가입" />
 			<input class="signUp-external button primary" type="button" value="FaceBook" style="float: left;" /> 
 			<input class="signUp-external button danger" type="button" value="Google+"  style="float: right;" />
