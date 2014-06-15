@@ -13,11 +13,10 @@
 
 <link href="css/metro-bootstrap.css" rel="stylesheet">
 <link href="css/metro-bootstrap-responsive.css" rel="stylesheet">
-<link href="css/iconFont.css" rel="stylesheet">
 <link href="css/docs.css" rel="stylesheet">
 <link href="css/common.css" rel="stylesheet">
 <link href="js/prettify/prettify.css" rel="stylesheet">
-
+<link href="/css/font.css" rel="stylesheet">
 
 <!-- Load JavaScript Libraries -->
 <script src="js/jquery/jquery.min.js"></script>
