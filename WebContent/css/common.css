@@ -10,9 +10,6 @@ input { border-radius: 2px; box-shadow: 0 1px #eee; }
 /* 임시 header, footer css */
 #footer { font-size: 0.8em; width: auto; height: 80px; background-color: #CCC; padding: 10px; line-height: 50px; margin-top: 10px;}
 
-
-
-
 /* 공통 css 에 추가하고 싶으시면 이 곳에 적으시고 다른 팀원들에게 알려주세요. */
 .footer-nav {
 	/* border: 1px solid red; */
