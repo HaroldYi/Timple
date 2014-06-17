@@ -27,6 +27,9 @@
 					<li><a href="#">프로젝트 3</a></li>
 				</ul>
 			</li>
+			<li><a href="#">알림</a></li>
+			<li><a href="#">쪽지</a></li>
+			<li><a href="#">메모</a></li>
 			<li><a href="#">이진호</a></li>
 		</ul>
 	

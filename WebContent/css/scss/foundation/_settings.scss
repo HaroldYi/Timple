@@ -47,7 +47,7 @@
 // We use these to control various global styles
 // $body-bg: #fff;
 // $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-family: "Nanum Gothic", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
 
@@ -533,12 +533,13 @@
 // $input-focus-bg-color: scale-color(#fff, $lightness: -2%);
 // $input-border-color: scale-color(#fff, $lightness: -20%);
 // $input-focus-border-color: scale-color(#fff, $lightness: -40%);
+$input-focus-border-color: #007095;
 // $input-border-style: solid;
 // $input-border-width: 1px;
-// $input-border-radius: $global-radius;
+// $input-border-radius: 3px;
 // $input-disabled-bg: #ddd;
 $input-box-shadow: 0 1px #eee;
-// $input-include-glowing-effect: true;
+$input-include-glowing-effect: false;
 
 // We use these to style the fieldset border and spacing.
 // $fieldset-border-style: solid;

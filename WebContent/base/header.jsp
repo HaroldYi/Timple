@@ -13,14 +13,12 @@
 		<!-- Left Nav Section -->
 		<ul class="left">
 			<li><a href="#">사이트 소개</a></li>
-			<li><a href="#">기부</a></li>
 		</ul>
 		
 		<!-- Right Nav Section -->
 		<ul class="right">
 			<li><a href="#">프로젝트 둘러보기</a></li>
 			<li><a href="#">로그인</a></li>
-			<li><a href="#">회원가입</a></li>
 		</ul>
 	
 	</section>
