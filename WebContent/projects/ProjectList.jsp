@@ -18,7 +18,7 @@
 		section{
 		
 		min-height: 800px;
-		
+		margin-left: -20px;
 	    }
 		
 		
@@ -40,7 +40,7 @@
 		
 		}
 		
-		#ing{
+		#subject{
 		
 		
 		margin-left: 50%;
@@ -52,7 +52,37 @@
 		padding: 5px;
 		font-weight: bold;
 		background-color: lightgray;
+		
+		
 		}
+		
+		
+	    #ing{
+	    
+	    
+	    margin-top: 10px;
+	    margin-bottom: 10px;
+	    
+	    
+	    }
+	    
+	    
+	    #recruit{
+	    
+	    
+	    margin-top: 10px;
+	    margin-bottom: 10px;
+	    
+	    
+	    }
+	    
+	    
+	    #search{
+	    
+	    width: 80px;
+	    margin-left: 800px;
+	    margin-top: 30px;
+	    }
 	    
 		
 		</style>
@@ -64,134 +94,149 @@
 	</head>
 	
 <body>
+
+
 	<%@ include file="/base/header2.jsp" %>
 	
-	<div id="subHeader">
+	<input type="text" id="search"  />
 	
-	<div id="ing" >진행 중인 프로젝트 </div>
-	
-	
-	
-	
-	</div>
-	
-	
-	<section>
-	
+<section>
+
+
+
+
+
+<div id="ing">	
+  
+<div id="subject">진행 중인 프로젝트</div>	
   
   <ul class="small-block-grid-3">
   
+
+  <li>
+  <img src="/images/01.jpg" />
+  <div id="name">webprograming</div>
+  <div id="leader">TeamLeader: johnson</div>
+  <div id="stratday">Start: 2014-06-01</div>
+  </li>
+  
+  
+  
+  <li>
+  <img src="/images/02.jpg" />
+  <div id="name">webprograming</div>
+  <div id="leader">TeamLeader: johnson</div>
+  <div id="stratday">Start: 2014-06-01</div> 
+  </li>
+  
+  
+  
+  <li>
+  <img src="/images/03.jpg" />
+  <div id="name">webprograming</div>
+  <div id="leader">TeamLeader: johnson</div>
+  <div id="stratday">Start: 2014-06-01</div>
+  
+
+  </li>
+  
+  </ul>
+  
+</div>
+  
+  
+  
+  
+  
  
-  <li><img src="/images/01.jpg" />
-  <div id="name">webprograming</div>
-  <div id="leader">TeamLeader: johnson</div>
-  <div id="stratday">Start: 2014-06-01</div>
-  <div id="recruit">모집인원: 1명</div>
-  </li>
   
+<div id="recruit">	
   
+<div id="subject">충원 중인 프로젝트</div>	
   
-  <li><img src="/images/02.jpg" />
-  
-  <div id="name">webprograming</div>
-  <div id="leader">TeamLeader: johnson</div>
-  <div id="stratday">Start: 2014-06-01</div>
-  <div id="recruit">모집인원: 1명</div>
+  <ul class="small-block-grid-3">
   
 
-  
-  </li>
-  
-  <li><img src="/images/03.jpg" />
-  
+  <li>
+  <img src="/images/04.jpg" />
   <div id="name">webprograming</div>
-  <div id="leader">TeamLeader: johnson</div>
-  <div id="stratday">Start: 2014-06-01</div>
-  <div id="recruit">모집인원: 1명</div>
-  
-  
+  <div id="leader">팀장: johnson</div>
+  <div id="stratday">시작일: 2014-06-01</div>
+  <div id="collection">모집인원: 1명 </div>
   </li>
   
   
-  <li><img src="/images/04.jpg" />
   
-  
+  <li>
+  <img src="/images/05.jpg" />
   <div id="name">webprograming</div>
   <div id="leader">TeamLeader: johnson</div>
-  <div id="stratday">Start: 2014-06-01</div>
-  <div id="recruit">모집인원: 1명</div>
-  
-  </li>
-  
-  <li><img src="/images/05.jpg" />
-  
-   
-  <div id="name">webprograming</div>
-  <div id="leader">TeamLeader: johnson</div>
-  <div id="stratday">Start: 2014-06-01</div>
-  <div id="recruit">모집인원: 1명</div>
-  
-  
-  
-  </li>
-  
-  <li><img src="/images/06.jpg" />
-  
-   
-  <div id="name">webprograming</div>
-  <div id="leader">TeamLeader: johnson</div>
-  <div id="stratday">Start: 2014-06-01</div>
-  <div id="recruit">모집인원: 1명</div>
-  
-  
-  
-  </li>
-  
-  <li><img src="/images/07.jpg" />
-  
-  
-  
-   
-  <div id="name">webprograming</div>
-  <div id="leader">TeamLeader: johnson</div>
-  <div id="stratday">Start: 2014-06-01</div>
-  <div id="recruit">모집인원: 1명</div>
-  
+  <div id="stratday">Start: 2014-06-01</div> 
   </li>
   
   
-  <li><img src="/images/08.jpg" />
   
-  
-   
+  <li>
+  <img src="/images/06.jpg" />
   <div id="name">webprograming</div>
   <div id="leader">TeamLeader: johnson</div>
   <div id="stratday">Start: 2014-06-01</div>
-  <div id="recruit">모집인원: 1명</div>
   
-  
-  </li>
-  
-  
-  <li><img src="/images/09.jpg" />
-  
-  
-  <div id="name">webprograming</div>
-  <div id="leader">TeamLeader: johnson</div>
-  <div id="stratday">Start: 2014-06-01</div>
-  <div id="recruit">모집인원: 1명</div>
-  
-  
-  
-   </li>
-  
-  
-  
-  
-  
-   </ul>
 
-	
+  </li>
+  
+  
+  
+  
+  
+  <li>
+  <img src="/images/07.jpg" />
+  <div id="name">webprograming</div>
+  <div id="leader">TeamLeader: johnson</div>
+  <div id="stratday">Start: 2014-06-01</div>
+  </li>
+  
+  
+  
+  <li>
+  <img src="/images/08.jpg" />
+  <div id="name">webprograming</div>
+  <div id="leader">TeamLeader: johnson</div>
+  <div id="stratday">Start: 2014-06-01</div> 
+  </li>
+  
+  
+  
+  <li>
+  <img src="/images/09.jpg" />
+  <div id="name">webprograming</div>
+  <div id="leader">TeamLeader: johnson</div>
+  <div id="stratday">Start: 2014-06-01</div>
+  
+
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </ul>
+  
+</div>
+  
+  
+  
+  
+
+
 </section>
 	
 	
