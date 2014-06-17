@@ -132,11 +132,11 @@
 	<script src="/js/foundation.min.js"></script>
 	<script>
 	
-		$(".popup-mask").show(); //test
+		//$(".popup-mask").show(); //test
 		
 		//$(".popup-signup").show(); //test
 		
-		$(".popup-login").show(); //test
+		//$(".popup-login").show(); //test
 		
 		$(".button.sign").click(function() {
 			if ($("#email").val() == "") {
