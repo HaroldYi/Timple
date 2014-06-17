@@ -1,24 +1,62 @@
 @charset "UTF-8";
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
-* { font-family: 'Nanum Gothic', sans-serif !important; }
+
+input[type="text"], input[type="password"], input[type="email"] { border-radius: 3px; }
+
+
+/* index */
+#container-wrap { position: relative; min-height: 700px; }
+#signup-container {	position: absolute;	top: 10%; left: 65%; width: 300px; height: 700px; padding: 10px; }
+#signup-container input, #signup-container .btn, #signup-container .horiz-bar { margin: 5px 0px; }
+
+.btn { padding: 5px 8px; width: 48%; height: 37px; font-size: 0.8em; font-weight: bold; line-height: 27px; }
+.btn.fb { float: left; background-color: #3b5998; }
+.btn.gg { float: right; background-color: #da573b; }
+
+.button.sign { width: 100%; height: 37px; padding: 2px 32px; font-size: 0.8em; }
+.horiz-bar { display: table; width: 100%; height: 28px; clear: both; }
+.horiz-bar-line {
+	width: auto; height: 28px;
+	background: transparent url(../images/faq_border_dot.png) 50% 50% repeat-x;
+}
+.horiz-bar-line, .centered { display: table-cell; }
+.centered { font-size: 0.8em; width: 60px; text-align: center; vertical-align: middle; }
+.error-text { 
+	padding-left: 18px !important; 
+	font-size: 0.8em; 
+	color: #e74c3c !important; 
+	background: url(../images/error.png) no-repeat left center;
+}
+.icon { background: url(../images/sign.png) no-repeat; background-size: 250px 120px; float: left; margin: 3px 0px; }
+.ic-fb { width: 28px; height: 22px; }
+.ic-gg { background-position: -65px 0; width: 24px; height: 25px; left: 1px; }
+
+/* popup */
+.popup-mask { 
+	display: none; position: fixed; 
+	left: 0; top: 0;
+	width: 100%; height: 100%;
+	background: #000;
+	opacity: 0.5; 
+	z-index: 1000; 
+}
+.popup-wrap {	
+	display: none; position: fixed; 
+	margin: 0 0 0 -335px; padding: 40px;
+	width: 670px; height: auto;
+	top: 150px; left: 50%;
+	border-radius: 6px; 
+	background: #fff;
+	z-index: 1001;
+}
+
+.popup-wrap .popup-close { position: absolute; top: 20px; right: 20px; }
+.popup-login .bottom { position: absolute; bottom: 10%; }
+.popup-wrap .left { width: 50%; padding-right: 20px; }
+.popup-wrap .right { width: 50%; height: 210px; padding-left: 20px; border-left: 1px solid #ebeff1; }
 
 /* 임시 header, footer css */
 #footer { font-size: 0.8em; width: auto; height: 80px; background-color: #CCC; padding: 10px; line-height: 50px; margin-top: 10px;}
 
 /* 공통 css 에 추가하고 싶으시면 이 곳에 적으시고 다른 팀원들에게 알려주세요. */
-.footer-nav {
-	/* border: 1px solid red; */
-	display: inline-block;
-	height: 70px;	
-	cursor: pointer;
-}
-.footer-nav-span {
-	border-right: 1px solid grey; 
-}
-#main {
-	min-height: 84%;
-}
-#footer {
-	margin-bottom: 0px;
-}
