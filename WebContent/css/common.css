@@ -22,6 +22,7 @@ input[type="text"], input[type="password"], input[type="email"] { border-radius:
 }
 .horiz-bar-line, .centered { display: table-cell; }
 .centered { font-size: 0.8em; width: 60px; text-align: center; vertical-align: middle; }
+.error-state { border-color: #e74c3c !important; }
 .error-text { 
 	padding-left: 18px !important; 
 	font-size: 0.8em; 
