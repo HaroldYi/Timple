@@ -12,7 +12,7 @@
 	
 		<!-- Left Nav Section -->
 		<ul class="left">
-			<li><a href="#">프로젝트 목록</a></li>
+			<li><a href="../projects/ProjectList.jsp">프로젝트 목록</a></li>
 			<li><a href="#">프로젝트 등록</a></li>
 			<li><a href="#">커뮤니티</a></li>
 		</ul>
