@@ -22,6 +22,7 @@ input[type="text"], input[type="password"], input[type="email"] { border-radius:
 }
 .horiz-bar-line, .centered { display: table-cell; }
 .centered { font-size: 0.8em; width: 60px; text-align: center; vertical-align: middle; }
+.error-state { border-color: #e74c3c !important; }
 .error-text { 
 	padding-left: 18px !important; 
 	font-size: 0.8em; 
@@ -59,4 +60,4 @@ input[type="text"], input[type="password"], input[type="email"] { border-radius:
 /* 임시 header, footer css */
 #footer { font-size: 0.8em; width: auto; height: 80px; background-color: #CCC; padding: 10px; line-height: 50px; margin-top: 10px;}
 
-/* 공통 css 에 추가하고 싶으시면 이 곳에 적으시고 다른 팀원들에게 알려주세요. */
+/* 공통 css 에 추가하고 싶으시면 이 곳에 적으시고 다른 팀원들에게 알려주세요... */

@@ -51,7 +51,7 @@
 			</div>
 			<div class="row">
 				<div class="large-4 columns">
-					<label>팀장<input type="text" readonly="readonly" />이진호
+					<label>팀장<input type="text" readonly="readonly" value="이진호"/>
 					</label>
 				</div>
 				<div class="large-4 columns">
