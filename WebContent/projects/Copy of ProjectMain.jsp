@@ -44,13 +44,17 @@ footer {
 }
 </style>
 <script>
-	$.ajax({
-		type:"POST",
-		url:"Test1.jsp",
-		success: callBack
-	});	
-	function callBack(result) {		
-		$("#main-body").html(result);
+	function sel(){
+		var sort ="sort";
+		$.ajax({
+			type:"POST",
+			url:"Test1.jsp",
+			data:"sort="+sort,
+			success: callBack
+		});	
+		function callBack(result) {		
+			$("#main-body").html(result);
+		}
 	}
 </script>
 </head>
@@ -70,7 +74,7 @@ footer {
 
 		<h3>Content</h3>
 		<ul class="toggle">
-			<li class="icn_new_article"><a href="#">New Article</a></li>
+			<li class="icn_new_article"><a href="#" onclick="sel();">1번 적용</a></li>
 			<li class="icn_edit_article"><a href="#">Edit Articles</a></li>
 			<li class="icn_categories"><a href="#">Categories</a></li>
 			<li class="icn_tags"><a href="#">Tags</a></li>
@@ -97,11 +101,10 @@ footer {
 	</aside>
 
 	<div id="main-body">
-	
-	
-	
-	
-	</div>	
+		
+		
+		
+	</div>
 	
 	<footer>
 		<%@ include file="../base/footer.jsp"%>
