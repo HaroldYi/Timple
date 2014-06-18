@@ -48,7 +48,7 @@ footer {
 		var sort ="sort";
 		$.ajax({
 			type:"POST",
-			url:"Test1.jsp",
+			url:"mainAjax.jsp",
 			data:"sort="+sort,
 			success: callBack
 		});	
