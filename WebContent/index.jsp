@@ -43,7 +43,7 @@
 	</div>
 	
 	<div class="popup-wrap popup-signup">
-		<a class="popup-close" href="#">
+		<a class="popup-close" href="#" onclick="closePopup();">
 			<img src="images/popup_close.png" />
 		</a>
 		<h4>회원가입</h4>
@@ -138,31 +138,77 @@
 		
 		//$(".popup-login").show(); //test
 		
+		var popupState = 0;
+		
+		function isValidEmailAddress(emailAddress) {
+			var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]$/i);
+			return pattern.test(emailAddress);
+		}
+		
+		function isValidName(name) {
+			var pattern = new RegExp(/^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/i);
+			return pattern.test(name);
+		}
+		
+		console.log(isValidName("홍길동"));
+		console.log(isValidName("dong test"));
+		console.log(isValidName("홍길동동동동"));
+		
 		$(".button.sign").click(function() {
-			if ($("#email").val() == "") {
+			
+			$email = $("#email").val();
+			
+			if ($email == "") {
 				if ($(".error-text").length == 0) {
 					$(" <span class='error-text'>이메일 주소가 입력되지 않았습니다.</span> ").insertAfter( $("#email") );
-					$("#email").css("border-color", "#e74c3c");
+					$("#email").addClass("error-state");
+					$("#email").focus();
 					
 					var counter = 0;
 					var interval = setInterval(function() {
 						counter++;
 						if (counter == 5) {
 							$(".error-text").remove();
-							$("#email").css("border-color", "#ccc");
+							$("#email").removeClass("error-state");
 							clearInterval(interval);
 						}
 					}, 1000);
 				}
 			}
+			else {
+				if (isValidEmailAddress($email)) {
+					console.log($email);
+					$(".popup-mask").show();
+					$(".popup-signup").show();
+				} else {
+					if ($(".error-text").length == 0) {
+						$(" <span class='error-text'>이메일 주소가 맞나요?</span> ").insertAfter( $("#email") );
+						$("#email").addClass("error-state");
+						
+						var counter = 0;
+						var interval = setInterval(function() {
+							counter++;
+							if (counter == 5) {
+								$(".error-text").remove();
+								$("#email").removeClass("error-state");
+								clearInterval(interval);
+							}
+						}, 1000);
+					}
+				}
+			}
 		});
+		
+		function closePopup() {
+			$(".popup-mask").hide();
+			$(".popup-signup").hide();
+		}
+		
 		
 		$("#email").click(function() {
-			$(".error-text").remove();
-			$(this).css("border-color", "#ccc");
+			
+			$(this).removeClass("error-state");
 		});
-		
-		
 	
 	</script>
 
