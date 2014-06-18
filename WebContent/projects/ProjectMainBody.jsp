@@ -6,13 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Timple</title>
+<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 <link rel="stylesheet" href="../css/timple.css" />
 <link rel="stylesheet" href="../css/common.css" />
 <script src="../js/vendor/modernizr.js"></script>
 <!-- Side Menu Script Start-->
 <link rel="stylesheet" href="../css/sidemenu/layout.css" media="screen" />
-<script
-	src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
 <script src="../js/sidemenu/hideshow.js"></script>
 <script src="../js/sidemenu/jquery.tablesorter.min.js"></script>
 <script src="../js/sidemenu/jquery.equalHeight.js"></script>
@@ -42,17 +44,20 @@ footer {
 	border: 1px solid red;
 	display: inline-block;
 }
+#num {
+	font-size: 30px;
+}
 </style>
 <script>
-	function sel(){
-		var sort ="sort";
+	function sel(){		
 		$.ajax({
 			type:"POST",
 			url:"mainAjax.jsp",
-			data:"sort="+sort,
+			data:"sort=Ajax",
 			success: callBack
 		});	
 		function callBack(result) {		
+			
 			$("#main-body").html(result);
 		}
 	}
@@ -74,8 +79,8 @@ footer {
 
 		<h3>Content</h3>
 		<ul class="toggle">
-			<li class="icn_new_article"><a href="#" onclick="sel();">1번 적용</a></li>
-			<li class="icn_edit_article"><a href="#">Edit Articles</a></li>
+			<li class="icn_new_article"><a href="#" onclick="sel();">Ajax로 1번 적용</a></li>
+			<li class="icn_edit_article"><a href="mainAjax.jsp?sort=screen">링크로 1번 적용</a></li>
 			<li class="icn_categories"><a href="#">Categories</a></li>
 			<li class="icn_tags"><a href="#">Tags</a></li>
 		</ul>
@@ -108,7 +113,7 @@ footer {
 	
 	<footer>
 		<%@ include file="../base/footer.jsp"%>
-		<script src="../js/foundation.min.js"></script>
+		<script src="../js/foundation.min.js"></script>		
 	</footer>
 </body>
 </html>
