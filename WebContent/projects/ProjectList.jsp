@@ -20,7 +20,8 @@ div#section {
 
 .small-block-grid-3 {
 	margin-top: 35px;
-	margin-left: 205px;
+	margin-left: 70px;
+	
 }
 
 img {
@@ -28,8 +29,9 @@ img {
 	height: 200px;
 }
 
+
 #subject {
-	margin-left: 50%;
+	margin-left: 45%;
 	margin-top: 20px;
 	border: 1px solid black;
 	width: 160px;
@@ -38,23 +40,53 @@ img {
 	padding: 5px;
 	font-weight: bold;
 	background-color: lightgray;
+	
+	
+	
 }
 
 #ing {
+
+	height: 350px;
+	overflow:scroll;
+	overflow-x:hidden;
 	margin-top: 10px;
 	margin-bottom: 10px;
+    width: 1000px;
+    padding: 20px;
+    border: 1px solid gray;
+    margin-left: 150px;
+    
 }
 
 #recruit {
-	margin-top: 10px;
+	margin-top: 70px;
 	margin-bottom: 10px;
+	width: 1000px;
+	height: 350px;
+	overflow:scroll;
+	overflow-x:hidden;
+	border: 1px solid gray;
+	margin-left: 150px;
+	
+	
+	
 }
 
 #search {
 	width: 150px;
-	margin-left: 924px;
+	margin-left: 999px;
 	margin-top: 30px;
 }
+
+
+
+li{
+
+font-weight: bold;
+
+}
+
 
 </style>
 
@@ -66,20 +98,23 @@ img {
 
 
 	<%@ include file="/base/header2.jsp"%>
-	<div></div>
+	
 
 	<div id="section">
+
+
+
+            <div id="header1">
+			<div id="subject">진행 중인 프로젝트</div>
+			<input type="text" name="search" id="search" placeholder="프로젝트 검색" />
+            </div>
+
 
 
 
 
 
 		<div id="ing">
-
-			<div id="subject">진행 중인 프로젝트</div>
-			<input type="text" name="search" id="search" placeholder="프로젝트 검색" />
-
-
 
 			<ul class="small-block-grid-3">
 
@@ -102,7 +137,36 @@ img {
 					<div id="name">webprograming</div>
 					<div id="leader">TeamLeader: johnson</div>
 					<div id="stratday">Start: 2014-06-01</div></li>
+					
+				
+				
+				
+				
+				<li><img src="/images/01.jpg" />
+					<div id="name">webprograming</div>
+					<div id="leader">TeamLeader: johnson</div>
+					<div id="stratday">Start: 2014-06-01</div></li>
 
+
+
+				<li><img src="/images/02.jpg" />
+					<div id="name">webprograming</div>
+					<div id="leader">TeamLeader: johnson</div>
+					<div id="stratday">Start: 2014-06-01</div></li>
+
+
+
+				<li><img src="/images/03.jpg" />
+					<div id="name">webprograming</div>
+					<div id="leader">TeamLeader: johnson</div>
+					<div id="stratday">Start: 2014-06-01</div></li>
+				
+				
+				
+				
+				
+				
+				
 			</ul>
 
 		</div>
@@ -110,12 +174,12 @@ img {
 
 
 
-
-
+            <div id="header2">
+			<div id="subject">충원 중인 프로젝트</div>
+            </div>
 
 		<div id="recruit">
 
-			<div id="subject">충원 중인 프로젝트</div>
 
 			<ul class="small-block-grid-3">
 
