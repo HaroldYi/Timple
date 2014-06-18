@@ -16,7 +16,7 @@
 	<h3>템플릿입니다.</h3>
 	
 	
-
+	<input type="text" name="" id="" />
 	
 	
 	
