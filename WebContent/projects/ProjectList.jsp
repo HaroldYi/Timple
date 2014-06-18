@@ -13,9 +13,12 @@
 
 
 <style type="text/css">
+
 div#section {
 	min-height: 800px;
 	margin-left: -20px;
+	
+	
 }
 
 .small-block-grid-3 {
@@ -31,6 +34,7 @@ img {
 
 
 #subject {
+
 	margin-left: 45%;
 	margin-top: 20px;
 	border: 1px solid black;
@@ -41,8 +45,7 @@ img {
 	font-weight: bold;
 	background-color: lightgray;
 	
-	
-	
+
 }
 
 #ing {
@@ -60,7 +63,7 @@ img {
 }
 
 #recruit {
-	margin-top: 70px;
+	margin-top: 10px;
 	margin-bottom: 10px;
 	width: 1000px;
 	height: 350px;
@@ -85,7 +88,9 @@ li{
 
 font-weight: bold;
 
+
 }
+
 
 
 </style>
@@ -176,6 +181,7 @@ font-weight: bold;
 
             <div id="header2">
 			<div id="subject">충원 중인 프로젝트</div>
+			<input type="text" name="search" id="search" placeholder="프로젝트 검색" />
             </div>
 
 		<div id="recruit">
