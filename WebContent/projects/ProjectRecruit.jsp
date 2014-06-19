@@ -55,8 +55,6 @@ width: 980px;
 padding: 20px;
 
 
-
-
 }
 
 #detail{
@@ -76,10 +74,6 @@ word-spacing: 3px;
 }
 
 
-
-
-
-
 #article{
 
 
@@ -94,8 +88,6 @@ padding: 20px;
 
 
 }
-
-
 
 
 #img{
@@ -120,8 +112,6 @@ font-weight: bold;
 }
 
 
-
-
 #send{
 
 border: 1px solid gray;
@@ -130,14 +120,23 @@ height: 40px;
 box-shadow: 3px 7px 4px rgba(83, 83, 93, 0.28);
 background-color: white;
 
-
 }
 
 
 
+.popupMemo{
 
+display: none; 
+position: fixed; 
+margin: 170px 0 0 -335px;
+padding: 30px;
+width: 430px; height: 300px;
+top: 150px; left: 50%;
+border-radius: 8px; 
+z-index: 1;
+background-color: LemonChiffon;
 
-
+}
 
 
 
@@ -147,6 +146,19 @@ background-color: white;
 
 
 
+
+<script type="text/javascript">	
+
+function popup() {
+	
+	
+	$(".popupMemo").show();
+	
+	
+}
+
+
+</script>
 
 </head>
 
@@ -160,35 +172,15 @@ background-color: white;
 
 
 
-<div class="popup-mask"></div>
-	<div class="popup-wrap popup-login">
-		<a class="popup-close" href="#">
-			<img src="images/popup_close.png" />
-		</a>
-		<h3>로그인</h3>
-		<div class="left">
-			<h6>이메일주소로 로그인</h6>
-			 <form method="post" id="loginForm">
-				<input type="email" placeholder="이메일" name="email" />
-				<input type="password" placeholder="비밀번호" name="password" />
-				<input class="button login" type="submit" value="로그인" />
-			</form>
- 		</div>
-		<div class="right">
-			<h6>소셜 네트워크로 간편하게 로그인</h6>
-			<button class="btn fb">
- 				<span class="icon ic-fb"></span><span> Facebook</span>
- 			</button>
-			<button class="btn gg">
-				<span class="icon ic-gg"></span><span> Google</span>
-			</button>
-		</div>
+<div class="popupMemo"></div>
+
+
+	
+	
+	
+	
 		
-		<div class="bottom">
-			<a href="#">이메일 찾기</a> | 
-			<a href="#">비밀번호 찾기</a>
-		</div>
-	</div>
+		
 
 
 
@@ -236,7 +228,7 @@ Building Design project
 <div id="teamCount">팀원수: 7명</div>
 
 
-<input type="button" id="send" name="send"  value="쪽지 보내기"     />
+<input type="button" id="send" name="send"  value="쪽지 보내기"   onclick= "popup()"      />
 
 
 </div>
