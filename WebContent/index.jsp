@@ -66,14 +66,10 @@
 				</div>
 				<div class="row">
 					<div class="small-3 columns" style="padding-left: 0px;">
-						<select name="tel_first">
-							<option value="">02</option>
-							<option value="">031</option>
-							<option value="">010</option>
-						</select>
+						<select name="tel_first"></select>
 					</div>
 					<div class="small-9 columns" style="padding: 0px;">
-						<input type="text" placeholder="나머지 번호" name="tel" />
+						<input type="text" placeholder="나머지 번호" name="tel" maxlength="8" />
 					</div>
 				</div>
 				<input type="checkbox" name="inform" checked /> <span class="check-label">팀 프로젝트 초대 알림에 동의합니다. </span>
@@ -148,8 +144,22 @@
 	<script src="js/timple.js"></script>
 	<script>
 		
+	// 가끔 제멋대로 메인에서 email_empty 에러가 나올때가 있음.
+	
 		var $signEmail = $("#signup-container input[name='email']");
 		var $loginEmail = $("#loginForm input[name='email']");
+		
+		var $name = $("#signupForm input[name='name']");
+		var $pw = $("#signupForm input[name='pw']");
+		var $check_pw = $("#signupForm input[name='check_pw']");
+		var $tel_first = $("#signupForm select[name='tel_first']"); // option:selected
+		var $tel = $("#signupForm input[name='tel']");
+		
+		$.each(tel_array, function(i, arr) {
+		    $("select[name='tel_first']").append($("<option/>", {
+		        value: arr, text: arr
+		    }));
+		});
 		
 		$signEmail.focus();
 		
@@ -177,23 +187,23 @@
 				
 				var flag = true;
 				var $email = $(this).find("input[name='email']");
-				var $pw = $(this).find("input[name='pw']");
+				var $loginPw = $(this).find("input[name='pw']");
 				
 				if ($email.val() == "") {
 					$email.showWarning("empty").focus();
 					flag = false;
 				} else if (!$email.isValidEmail()) {
-					$email.showWarning("wrong");
+					$email.showWarning("wrong").focus();
 					flag = false;
 				}
 				
-				if ($pw.val() == "") {
-					$pw.showWarning("empty");
+				if ($loginPw.val() == "") {
+					$loginPw.showWarning("empty");
 					
 					if ($email.val() == "") {
 						$email.focus();
 					} else {
-						$pw.focus();
+						$loginPw.focus();
 					}
 					
 					flag = false;
@@ -223,7 +233,6 @@
 		});
 		 
 		$loginEmail.on("input", function() {
-			console.log("empty");
 			$(this).removeWarning("empty");
 		});
 	
@@ -251,6 +260,7 @@
 				$signEmail.removeWarning("wrong");
 				$(".popup-mask").show();
 				$(".popup-signup").show();
+				$name.focus();
 				popupState = true;
 			} else {
 				$signEmail.showWarning("wrong").focus();
@@ -284,17 +294,13 @@
 			}
 		});
 		
+		
+		
 		$("#signupForm").submit(function(e) {
 			
 			e.preventDefault();
+
 			
-		
-			
-			var $name = $(this).find("input[name='name']");
-			var $pw = $(this).find("input[name='pw']");
-			var $check_pw = $(this).find("input[name='check_pw']");
-			var $tel_first = $(this).find("input[name='tel_first']");
-			var $tel = $(this).find("input[name='tel']");
 			
 			var $onecategory = $(this).find("input[name='onecategory']");
 			var $twocategory = $(this).find("input[name='twocategory']");
@@ -302,12 +308,95 @@
 			
 			var $inform = $(this).find("input[name='inform']");
 			
-			if ($name.val() == "") $name.showWarning("empty").focus();
+			if ($name.val() == "") $name.showWarning("empty").focus();			
 			if ($pw.val() == "") $pw.showWarning("empty").focus();
 			if ($check_pw.val() == "") $check_pw.showWarning("mismatch").focus();
 			if ($tel.val() == "") $tel.showWarning("empty").focus();
 			
 			
+		});
+		
+		$name.blur(function() {
+			if ($(this).val() != "") {
+				if ($(this).val().length < 2) {
+					$(this).showWarning("short");
+				} else if (!$(this).isValidName()){
+					$(this).showWarning("wrong");
+				} else {
+					$(this).removeWarning("short");
+					$(this).removeWarning("wrong");
+				}
+			} else {
+				$(this).showWarning("empty");
+			}
+		});
+		
+		$name.on("input", function() {
+			$(this).removeWarning("empty");
+		});
+		
+		$pw.blur(function() {
+			if ($(this).val() != "") {
+				if (!$(this).isValidPassword()) {
+					$(this).showWarning("wrong");
+				} else {
+					$(this).removeWarning("wrong");
+				}
+			} else {
+				$(this).showWarning("empty");
+			}
+		});
+		
+		$pw.on("input", function() {
+			$(this).removeWarning("empty");
+		});
+		
+		$check_pw.blur(function() {
+			if ($(this).val() != "") {
+				if ($(this).val() != $pw.val()) {
+					$(this).showWarning("mismatch");
+				} else {
+					$(this).removeWarning("mismatch");
+				}
+			} else {
+				$(this).showWarning("mismatch");
+			}
+		});
+		
+		$check_pw.on("input", function() {
+			if ($(this).val() != "") {
+				if ($(this).val() != $pw.val()) {
+					$(this).showWarning("mismatch");
+				} else {
+					$(this).removeWarning("mismatch");
+				}
+			} else {
+				$(this).showWarning("mismatch");
+			}
+		});
+		
+		$tel.blur(function() {
+			if ($(this).val() != "") {
+				if (!$(this).isValidTel()) {
+					$(this).showWarning("wrong");
+				} else {
+					$(this).removeWarning("wrong");
+				}
+			} else {
+				$(this).showWarning("empty");
+			}
+		});
+		
+		$tel.on("input", function() {
+			if ($(this).val() != "") {
+				if (!$(this).isValidTel()) {
+					$(this).showWarning("wrong");
+				} else {
+					$(this).removeWarning("wrong");
+				}
+			} else {
+				$(this).showWarning("empty");
+			}
 		});
 		
 		
