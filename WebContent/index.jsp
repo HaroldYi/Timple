@@ -1,31 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>Timple</title>
-		<link rel="stylesheet" href="/css/timple.css" />
-		<link rel="stylesheet" href="/css/common.css" />
-		<script src="/js/vendor/modernizr.js"></script>
+		<link rel="stylesheet" href="css/timple.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		<script src="js/vendor/modernizr.js"></script>
 	</head>
 <body>
-	<%@ include file="/base/header.jsp"%>
+	<%@ include file="/base/header2.jsp" %>
 	
 	<div class="popup-mask"></div>
 	<div class="popup-wrap popup-login">
 		<a class="popup-close" href="#">
 			<img src="images/popup_close.png" />
 		</a>
-		<h4>로그인</h4>
+		<h3>로그인</h3>
 		<div class="left">
 			<h6>이메일주소로 로그인</h6>
-			<form action="#" method="post">
-				<input type="email" placeholder="이메일" name="" id="" />
-				<input type="password" placeholder="비밀번호" name="" id="" />
-				<input class="button" type="submit" value="로그인" />
+			 <form method="post" id="loginForm">
+				<input type="email" placeholder="이메일" name="email" />
+				<input type="password" placeholder="비밀번호" name="password" />
+				<input class="button login" type="submit" value="로그인" />
 			</form>
-		</div>
+ 		</div>
 		<div class="right">
 			<h6>소셜 네트워크로 간편하게 로그인</h6>
 			<button class="btn fb">
@@ -37,27 +38,34 @@
 		</div>
 		
 		<div class="bottom">
-			<a href="#">이메일 찾기</a>
+			<a href="#">이메일 찾기</a> | 
 			<a href="#">비밀번호 찾기</a>
 		</div>
 	</div>
 	
 	<div class="popup-wrap popup-signup">
-		<a class="popup-close" href="#" onclick="closePopup();">
+		<a class="popup-close" href="#">
 			<img src="images/popup_close.png" />
 		</a>
-		<h4>회원가입</h4>
+		<h3>회원가입</h3>
 		<div class="left">
 			<h6>쉽고 간단하게 팀플에 가입해보세요!</h6>
 			<input type="text" placeholder="이름" name="" id="" />
 			<input type="password" placeholder="비밀번호" name="" id="" />
 			<input type="password" placeholder="비밀번호 확인" name="" id="" />
-			<select name="" id="" style="width: 50px; float: left; ">
-				<option value="">02</option>
-				<option value="">031</option>
-				<option value="">010</option>
-			</select>
-			<input type="number" placeholder="나머지 번호" name="" id="" style="width: 210px; float: right;"/>
+			<div class="row">
+				<div class="small-3 columns" style="padding-left: 0px;">
+					<select name="" id="">
+						<option value="">02</option>
+						<option value="">031</option>
+						<option value="">010</option>
+					</select>
+				</div>
+				<div class="small-9 columns" style="padding: 0px;">
+					<input type="text" placeholder="나머지 번호" name="" id="" />
+				</div>
+			</div>
+			<input type="checkbox" name="" id="" />프로젝트... 정보를 공개하겠습니다.
 			<input class="button" type="submit" value="회원가입하기" />
 		</div>
 		<div class="right">
@@ -83,12 +91,9 @@
 			 	<option value="">4년 이하</option>
 			 	<option value="">5년 이하</option>
 			 </select>
-			 
+			 이미 회원이신가요? 로그인해주세요!
 		</div>
-	</div>
-	
-	<!-- 회원가입 시 필요한 것들: 이름, 비밀번호, 비밀번호 확인, 휴대폰 앞번호, 휴대폰 뒷번호, /// 선택 사항 (1차 직종, 2차 직종, 경력)-->
-	
+	</div>	
 	
 	<div id="container-wrap">
 	
@@ -112,103 +117,165 @@
 			</div>
 			
 			<input type="email" placeholder="이메일" name="email" id="email" /> 
-			<!-- <input type="password" value="Password" /> 
-			<input type="password" value="Re-enter Password" />  -->
+			
 			<input class="button sign" type="button" value="이메일로 10초만에 가입" /> 
 				
 			
 		</div>
 	
 	</div>
-	
 
 	
-	
-	
-
-	<%@ include file="/base/footer.jsp"%>
+	<%@ include file="base/footer.jsp" %>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="/js/foundation.min.js"></script>
+	<script src="js/foundation.min.js"></script>
+	<script src="js/timple.js"></script>
 	<script>
 	
-		//$(".popup-mask").show(); //test
+		$(".popup-mask").show();
+		$(".popup-login").show();
 		
-		//$(".popup-signup").show(); //test
+		//login();
 		
-		//$(".popup-login").show(); //test
-		
-		var popupState = 0;
-		
-		function isValidEmailAddress(emailAddress) {
-			var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]$/i);
-			return pattern.test(emailAddress);
+		function login() {
+			
+			//메인에서 로그인 버튼 누르면 자동포커스가게 하기
+			$("#loginForm").submit(function(e) {
+				
+				console.log("submit 통과...");
+				
+				e.preventDefault();
+				
+				var flag = true;
+				var $email = $(this).find("input[name='email']");
+				var $password = $(this).find("input[name='password']");
+				
+				if ($email.val() == "") {
+					$email.showWarning("empty").focus();
+					flag = false;
+				} else if (!$email.isValidEmail()) {
+					$email.showWarning("wrong");
+					flag = false;
+				}
+				
+				if ($password.val() == "") {
+					$password.showWarning("empty");
+					
+					if ($email.val() == "") {
+						$email.focus();
+					} else {
+						$password.focus();
+					}
+					
+					flag = false;
+				}
+				
+				if (flag) {
+					//ajax...
+				}
+				
+				/* if (!$password.isValidPassword()) {
+					$password.showWarning("wrong");
+					flag = false;
+				} */
+			});
 		}
 		
-		function isValidName(name) {
-			var pattern = new RegExp(/^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/i);
-			return pattern.test(name);
-		}
 		
-		console.log(isValidName("홍길동"));
-		console.log(isValidName("dong test"));
-		console.log(isValidName("홍길동동동동"));
+		$("#loginForm input[name='email']").on("keyup", function(e) {
+			console.log("email 에서 enter...");
+			if (e.keyCode == 13) {
+				if ($(this).val() == "") {
+					$(this).showWarning("empty");
+				} else if (!$(this).isValidEmail()) {
+					$(this).showWarning("wrong");
+				}
+				$("#loginForm input[name='password']").focus();
+			}
+		});
+		
+		$("#loginForm input[name='password']").on("keyup",function(e) {
+			console.log("password 에서 enter..");
+			if (e.keyCode == 13) {
+				login();
+			}
+		});
+	
+		$("#email").focus();
+	
+		$(".popup-close").click(function() {
+			
+			if (popupState) {
+				$(".popup-mask").hide();
+				$(".popup-wrap").hide();
+				popupState = false;
+			}
+			
+		});
+		
+		function signUp() {
+			if ($("#email").val() == "") {
+				$("#email").showWarning("empty").focus();
+			} else if ($("#email").isValidEmail()) {
+				$("#email").removeWarning("wrong");
+				$(".popup-mask").show();
+				$(".popup-signup").show();
+				popupState = true;
+			} else {
+				$("#email").showWarning("wrong").focus();
+			}
+		}
 		
 		$(".button.sign").click(function() {
-			
-			$email = $("#email").val();
-			
-			if ($email == "") {
-				if ($(".error-text").length == 0) {
-					$(" <span class='error-text'>이메일 주소가 입력되지 않았습니다.</span> ").insertAfter( $("#email") );
-					$("#email").addClass("error-state");
-					$("#email").focus();
-					
-					var counter = 0;
-					var interval = setInterval(function() {
-						counter++;
-						if (counter == 5) {
-							$(".error-text").remove();
-							$("#email").removeClass("error-state");
-							clearInterval(interval);
-						}
-					}, 1000);
-				}
+			signUp();
+		});
+		
+		 $("#email").on("keyup", function(e) {
+			if (e.keyCode == 13) {
+				signUp();
+			} else if ($(this).val() != ""){
+				$(this).removeWarning("empty");
 			}
-			else {
-				if (isValidEmailAddress($email)) {
-					console.log($email);
-					$(".popup-mask").show();
-					$(".popup-signup").show();
-				} else {
-					if ($(".error-text").length == 0) {
-						$(" <span class='error-text'>이메일 주소가 맞나요?</span> ").insertAfter( $("#email") );
-						$("#email").addClass("error-state");
+		});
+		
+		/*$("#email").blur(function() {
 						
-						var counter = 0;
-						var interval = setInterval(function() {
-							counter++;
-							if (counter == 5) {
-								$(".error-text").remove();
-								$("#email").removeClass("error-state");
-								clearInterval(interval);
-							}
-						}, 1000);
+			if ($(this).val() != "") {
+				if (!$(this).isValidEmail()) {
+					if ($(".war-text").length == 0) {
+						
+						$(this).showWarning("wrong");
+
 					}
+				} else {
+					$(this).removeWarning("wrong");
 				}
 			}
-		});
+		}); */
 		
-		function closePopup() {
-			$(".popup-mask").hide();
-			$(".popup-signup").hide();
-		}
+/* 		$("#email").on("keyup", function(e) {
+			if (e.keyCode == 13) {
+				signUp();
+			} else if ($(this).val() != ""){
+				$(this).removeWarning("empty");
+			}
+		}).blur(function() {
+						
+			if ($(this).val() != "") {
+				if (!$(this).isValidEmail()) {
+					if ($(".war-text").length == 0) {
+						
+						$(this).showWarning("wrong");
+	
+					}
+				} else {
+					$(this).removeWarning("wrong");
+				}
+			}
+		}); */
 		
 		
-		$("#email").click(function() {
-			
-			$(this).removeClass("error-state");
-		});
 	
 	</script>
 
