@@ -6,47 +6,71 @@
 <head>
 <meta charset="UTF-8">
 <title>Timple</title>
+<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 <link rel="stylesheet" href="../css/timple.css" />
 <link rel="stylesheet" href="../css/common.css" />
 <script src="../js/vendor/modernizr.js"></script>
 <!-- Side Menu Script Start-->
 <link rel="stylesheet" href="../css/sidemenu/layout.css" media="screen" />
-<script
-	src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
 <script src="../js/sidemenu/hideshow.js"></script>
 <script src="../js/sidemenu/jquery.tablesorter.min.js"></script>
 <script src="../js/sidemenu/jquery.equalHeight.js"></script>
-<!-- Side Menu Script End -->
+<!-- Side Menu Script Start -->
 
 <!-- Gantt Start -->
-
+<link rel="stylesheet" type="text/css"
+	href="/css/gantt/jquery-ui-1.8.4.css" />
+<link rel="stylesheet" type="text/css" href="/css/gantt/reset.css" />
+<link rel="stylesheet" type="text/css"
+	href="/css/gantt/jquery.ganttView.css" />
 <!-- Gantt End -->
 <style type="text/css">
 #sidebar {
 	float: left;
+	min-height: 700px;
 }
 
-#content {
-	float: left;
-	width: 972px;
-	min-height: 820px;
-	border: 1px solid red;
-}
-.user>img{ width: 100px; height: 100px;}
 footer {
 	clear: both;
 }
+#main-body {
+	margin: 10px;
+	padding: 10px;
+	width: 1150px; /* 75% */
+	min-height: 100%;
+	border: 1px solid red;
+	display: inline-block;
+}
+#num {
+	font-size: 30px;
+}
 </style>
+<script>
+	function sel(){		
+		$.ajax({
+			type:"POST",
+			url:"mainAjax.jsp",
+			data:"sort=Ajax",
+			success: callBack
+		});	
+		function callBack(result) {		
+			
+			$("#main-body").html(result);
+		}
+	}
+</script>
 </head>
 <body>
 	<%@ include file="../base/header2.jsp"%>
 	<!-- Side Menu Start -->
-	<aside id="sidebar" class="column" style="margin-top: 0px; min-height: 820px;">
+	
+	<aside id="sidebar" class="column"
+		style="margin-top: 0px; min-height: 820px;">
 		<div class="user">
-			<div id="profile">
-			
-			</div>
-			<img src="/images/member/진호pro.JPG" alt="프로필사진" />
+			<img src="" alt="" />
 			<p>
 				John Doe (<a href="#">3 Messages</a>)
 			</p>
@@ -55,8 +79,8 @@ footer {
 
 		<h3>Content</h3>
 		<ul class="toggle">
-			<li class="icn_new_article"><a href="#">New Article</a></li>
-			<li class="icn_edit_article"><a href="#">Edit Articles</a></li>
+			<li class="icn_new_article"><a href="#" onclick="sel();">Ajax로 1번 적용</a></li>
+			<li class="icn_edit_article"><a href="mainAjax.jsp?sort=screen">링크로 1번 적용</a></li>
 			<li class="icn_categories"><a href="#">Categories</a></li>
 			<li class="icn_tags"><a href="#">Tags</a></li>
 		</ul>
@@ -80,15 +104,16 @@ footer {
 			<li class="icn_jump_back"><a href="#">Logout</a></li>
 		</ul>
 	</aside>
-	<!-- Side Menu End -->
-	<section>
-		<div id="content">
-			
-		</div>
-	</section>
+
+	<div id="main-body">
+		
+		
+		
+	</div>
+	
 	<footer>
 		<%@ include file="../base/footer.jsp"%>
-		<script src="../js/foundation.min.js"></script>
+		<script src="../js/foundation.min.js"></script>		
 	</footer>
 </body>
 </html>
