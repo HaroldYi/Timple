@@ -233,6 +233,9 @@
 		
 		$(".popup-close").click(function(e) {
 			
+			$(".war-text").remove();
+			$(".war-state").removeClass("war-state");
+			
 			$(".popup-mask").hide();
 			$(".popup-wrap").hide();
 			
