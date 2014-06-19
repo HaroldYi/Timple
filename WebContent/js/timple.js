@@ -13,9 +13,11 @@ var wrong_name = "이름은 두 글자 이상 입력해주세요.";
 var empty_tel = "전화번호를 입력해주세요.";
 var wrong_tel = "전화번호를 다시 확인해주세요.";
 
-var empty_password = "비밀번호를 입력해주세요.";
-var wrong_password = "6~20자 영문 대 소문자, 숫자, 특수문자를 사용해주세요.";
-var check_password = "비밀번호가 일치하지 않습니다.";
+var empty_pw = "비밀번호를 입력해주세요.";
+var wrong_pw = "6~20자 영문 대 소문자, 숫자, 특수문자를 사용해주세요.";
+var mismatch_pw = "비밀번호가 일치하지 않습니다.";
+
+var mismatch_check_pw = "비밀번호가 일치하지 않습니다.";
 
 /* Warning function */
 $.fn.showWarning = function(state) {

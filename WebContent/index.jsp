@@ -11,7 +11,7 @@
 		<script src="js/vendor/modernizr.js"></script>
 	</head>
 <body>
-	<%@ include file="/base/header.jsp" %>
+	<%@ include file="/base/header2.jsp" %>
 	
 	<div class="popup-mask"></div>
 	<div class="popup-wrap popup-login">
@@ -22,8 +22,12 @@
 		<div class="left">
 			<h6>이메일주소로 로그인</h6>
 			 <form method="post" id="loginForm">
+			 <div class="input-wrap">			 
 				<input type="text" placeholder="이메일" name="email" />
-				<input type="password" placeholder="비밀번호" name="password" />
+			 </div>
+			 <div class="input-wrap">			 
+				<input type="password" placeholder="비밀번호" name="pw" />
+			 </div>
 				<input class="button popup" type="submit" value="로그인" />
 			</form>
  		</div>
@@ -48,54 +52,56 @@
 			<img src="images/popup_close.png" />
 		</a>
 		<h3>회원가입</h3>
-		<div class="left">
-			<h6>쉽고 간단하게 팀플에 가입해보세요!</h6>
-			<input type="text" placeholder="이름" name="" id="" />
-			<input type="password" placeholder="비밀번호" name="" id="" />
-			<input type="password" placeholder="비밀번호 확인" name="" id="" />
-			<div class="row">
-				<div class="small-3 columns" style="padding-left: 0px;">
-					<select name="" id="">
-						<option value="">02</option>
-						<option value="">031</option>
-						<option value="">010</option>
-					</select>
+		<form id="signupForm">
+			<div class="left">
+				<h6>쉽고 간단하게 팀플에 가입해보세요!</h6>
+				<input class="enterDefault" type="text" placeholder="이름" name="name" />
+				<input class="enterDefault" type="password" placeholder="비밀번호" name="pw" />
+				<input class="enterDefault" type="password" placeholder="비밀번호 확인" name="check_pw" />
+				<div class="row">
+					<div class="small-3 columns" style="padding-left: 0px;">
+						<select name="tel_first">
+							<option value="">02</option>
+							<option value="">031</option>
+							<option value="">010</option>
+						</select>
+					</div>
+					<div class="small-9 columns" style="padding: 0px;">
+						<input type="text" placeholder="나머지 번호" name="tel" />
+					</div>
 				</div>
-				<div class="small-9 columns" style="padding: 0px;">
-					<input type="text" placeholder="나머지 번호" name="" id="" />
-				</div>
+				<input type="checkbox" name="inform" checked /> <span class="check-label">팀 프로젝트 초대 알림에 동의합니다. </span>
+				<input class="button popup" type="submit" value="회원가입하기" />
 			</div>
-			<input type="checkbox" name="inform" checked /> <span class="check-label">팀 프로젝트 초대 알림에 동의합니다. </span>
-			<input class="button popup" type="submit" value="회원가입하기" />
-		</div>
-		<div class="right">
-			 <h6>추가 입력 정보 (선택사항)</h6>
-			 <select name="" id="">
-			 	<option value="">1차 직종</option>
-			 	<option value="">1차 직종</option>
-			 	<option value="">1차 직종</option>
-			 	<option value="">1차 직종</option>
-			 	<option value="">1차 직종</option>
-			 </select>
-			 <select name="" id="">
-			 	<option value="">2차 직종</option>
-			 	<option value="">2차 직종</option>
-			 	<option value="">2차 직종</option>
-			 	<option value="">2차 직종</option>
-			 	<option value="">2차 직종</option>
-			 </select>
-			 <select name="" id="">
-			 	<option value="">경력</option>
-			 	<option value="">1년 이하</option>
-			 	<option value="">2년 이하</option>
-			 	<option value="">3년 이하</option>
-			 	<option value="">4년 이하</option>
-			 	<option value="">5년 이하</option>
-			 </select>
-		</div>
-		<div class="bottom">
-			 이미 회원이신가요? <a href="#">로그인 </a>해주세요!			
-		</div>
+			<div class="right">
+				 <h6>추가 입력 정보 (선택사항)</h6>
+				 <select class="enterDefault" name="onecategory">
+				 	<option value="">1차 직종</option>
+				 	<option value="">1차 직종</option>
+				 	<option value="">1차 직종</option>
+				 	<option value="">1차 직종</option>
+				 	<option value="">1차 직종</option>
+				 </select>
+				 <select class="enterDefault" name="twocategory">
+				 	<option value="">2차 직종</option>
+				 	<option value="">2차 직종</option>
+				 	<option value="">2차 직종</option>
+				 	<option value="">2차 직종</option>
+				 	<option value="">2차 직종</option>
+				 </select>
+				 <select class="enterDefault" name="career">
+				 	<option value="">경력</option>
+				 	<option value="">1년 이하</option>
+				 	<option value="">2년 이하</option>
+				 	<option value="">3년 이하</option>
+				 	<option value="">4년 이하</option>
+				 	<option value="">5년 이하</option>
+				 </select>
+			</div>
+			<div class="bottom">
+				 이미 회원이신가요? <a href="#">로그인 </a>해주세요!		
+			</div>
+		</form>
 	</div>	
 	
 	<div id="container-wrap">
@@ -145,7 +151,7 @@
 		// $("#test").click(function() {
 			
 		$(".popup-mask").show();
-		$(".popup-signup").show();
+		$(".popup-login").show();
 		
 		//});
 		 
@@ -162,7 +168,7 @@
 				
 				var flag = true;
 				var $email = $(this).find("input[name='email']");
-				var $password = $(this).find("input[name='password']");
+				var $pw = $(this).find("input[name='pw']");
 				
 				if ($email.val() == "") {
 					$email.showWarning("empty").focus();
@@ -172,13 +178,13 @@
 					flag = false;
 				}
 				
-				if ($password.val() == "") {
-					$password.showWarning("empty");
+				if ($pw.val() == "") {
+					$pw.showWarning("empty");
 					
 					if ($email.val() == "") {
 						$email.focus();
 					} else {
-						$password.focus();
+						$pw.focus();
 					}
 					
 					flag = false;
@@ -191,7 +197,7 @@
 			});
 		}
 		
-		$loginEmail.keypress(function(e) {
+		$(".enterDefault").keypress(function(e) {
 			if (e.keyCode == 13) return false;
 		});
 
@@ -268,29 +274,33 @@
 			}
 		});
 		
-/* 		$signEmail.on("keyup", function(e) {
-			if (e.keyCode == 13) {
-				signUp();
-			} else if ($(this).val() != ""){
-				$(this).removeWarning("empty");
-			}
-		}).blur(function() {
-						
-			if ($(this).val() != "") {
-				if (!$(this).isValidEmail()) {
-					if ($(".war-text").length == 0) {
-						
-						$(this).showWarning("wrong");
-	
-					}
-				} else {
-					$(this).removeWarning("wrong");
-				}
-			}
-		}); */
+		$("#signupForm").submit(function(e) {
+			
+			e.preventDefault();
+			
+		
+			
+			var $name = $(this).find("input[name='name']");
+			var $pw = $(this).find("input[name='pw']");
+			var $check_pw = $(this).find("input[name='check_pw']");
+			var $tel_first = $(this).find("input[name='tel_first']");
+			var $tel = $(this).find("input[name='tel']");
+			
+			var $onecategory = $(this).find("input[name='onecategory']");
+			var $twocategory = $(this).find("input[name='twocategory']");
+			var $career = $(this).find("input[name='career']");
+			
+			var $inform = $(this).find("input[name='inform']");
+			
+			if ($name.val() == "") $name.showWarning("empty").focus();
+			if ($pw.val() == "") $pw.showWarning("empty").focus();
+			if ($check_pw.val() == "") $check_pw.showWarning("mismatch").focus();
+			if ($tel.val() == "") $tel.showWarning("empty").focus();
+			
+			
+		});
 		
 		
-	
 	</script>
 
 </body>

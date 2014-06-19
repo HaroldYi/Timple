@@ -3,7 +3,7 @@
 
 h3 { font-weight: bold; }
 h6 { font-size: 0.8em; }
-input[type="text"], input[type="password"], input[type="email"], select { border-radius: 3px; }
+input[type="text"], input[type="password"], select { border-radius: 3px; }
 .check-label { font-weight: bold; font-size: 0.8em; }
 
 /* index */
@@ -15,7 +15,7 @@ input[type="text"], input[type="password"], input[type="email"], select { border
 .btn.fb { float: left; background-color: #3b5998; }
 .btn.gg { float: right; background-color: #da573b; }
 
-.button.popup { height: 36px; padding: 3px 26px; font-size: 0.9em; }
+.button.popup { height: 36px; padding: 3px 26px; font-size: 0.9em; margin-bottom: 40px; }
 .button.sign { width: 100%; height: 37px; padding: 2px 32px; font-size: 0.8em; }
 .horiz-bar { display: table; width: 100%; height: 28px; clear: both; }
 .horiz-bar-line {
@@ -27,7 +27,7 @@ input[type="text"], input[type="password"], input[type="email"], select { border
 .icon { background: url(../images/sign.png) no-repeat; background-size: 250px 120px; float: left; margin: 3px 0px; }
 .ic-fb { width: 28px; height: 22px; }
 .ic-gg { background-position: -65px 0; width: 24px; height: 25px; left: 1px; }
-
+.input-wrap { position: relative; }
 .war-state { border-color: #e74c3c !important; }
 .war-text { 
 	padding-left: 18px !important; 
@@ -55,20 +55,23 @@ input[type="text"], input[type="password"], input[type="email"], select { border
 	z-index: 1001;
 }
 .popup-wrap .popup-close { position: absolute; top: 20px; right: 20px; }
+.popup-wrap .war-text { position: absolute; top: -20px; }
 .popup-wrap .bottom { 
 	position: absolute; 
 	bottom: 0; left: 0;  
-	width: 100%; height: 40px;
+	width: 100%; height: 50px;
 	border-bottom-left-radius: 6px;
 	border-bottom-right-radius: 6px;
 	text-align: center;
-	line-height: 40px;
+	line-height: 50px;
 	background-color: #eee;
 	color: #ddd;
 	font-size: 0.8em;
 }
 .popup-signup .bottom { color: #696969; }
-.popup-wrap h6 { margin-bottom: 1rem; }
+.popup-wrap h3 { margin-bottom: 1rem; }
+.popup-wrap h6 { margin-bottom: 1.5rem; }
+.popup-wrap input[type="text"], .popup-wrap input[type="password"], .popup-wrap select { margin-bottom: 1.7rem; } 
 .popup-wrap .left { width: 50%; padding-right: 20px; }
 .popup-wrap .right { width: 50%; height: 175px; padding-left: 20px; border-left: 1px solid #ebeff1; }
 .popup-signup .right { height: 240px; }
