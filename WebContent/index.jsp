@@ -55,9 +55,15 @@
 		<form id="signupForm">
 			<div class="left">
 				<h6>쉽고 간단하게 팀플에 가입해보세요!</h6>
-				<input class="enterDefault" type="text" placeholder="이름" name="name" />
-				<input class="enterDefault" type="password" placeholder="비밀번호" name="pw" />
-				<input class="enterDefault" type="password" placeholder="비밀번호 확인" name="check_pw" />
+				<div class="input-wrap">
+					<input class="enterDefault" type="text" placeholder="이름" name="name" />
+				</div>
+				<div class="input-wrap">
+					<input class="enterDefault" type="password" placeholder="비밀번호" name="pw" />
+				</div>
+				<div class="input-wrap">
+					<input class="enterDefault" type="password" placeholder="비밀번호 확인" name="check_pw" />
+				</div>
 				<div class="row">
 					<div class="small-3 columns" style="padding-left: 0px;">
 						<select name="tel_first">
@@ -145,25 +151,28 @@
 		var $signEmail = $("#signup-container input[name='email']");
 		var $loginEmail = $("#loginForm input[name='email']");
 		
-		
 		$signEmail.focus();
 		
 		// $("#test").click(function() {
 			
-		$(".popup-mask").show();
-		$(".popup-login").show();
+		//$(".popup-mask").show();
+		//$(".popup-login").show();
 		
 		//});
 		 
 		login();
 		
+		$("#loginBtn").click(function() {
+			$(".popup-mask").show();
+			$(".popup-login").show();
+			$loginEmail.focus();
+		});
+		
 		function login() {
 			
 			//메인에서 로그인 버튼 누르면 자동포커스가게 하기
 			$("#loginForm").submit(function(e) {
-				
-				console.log("submit 통과...");
-				
+								
 				e.preventDefault();
 				
 				var flag = true;
@@ -202,7 +211,6 @@
 		});
 
 		$loginEmail.blur(function() {
-			console.log("blur");
 			if ($(this).val() != "") {
 				if ($(this).isValidEmail()) {
 					$(this).removeWarning("wrong");
@@ -219,17 +227,16 @@
 			$(this).removeWarning("empty");
 		});
 	
-		$("#loginForm input[name=password]").on("keyup", function() {
+		$("#loginForm input[name='pw']").on("keyup", function() {
 			if ($(this).val != "") $(this).removeWarning("empty");
 		});
 		
-		$(".popup-close").click(function() {
+		$(".popup-close").click(function(e) {
 			
-			if (popupState) {
-				$(".popup-mask").hide();
-				$(".popup-wrap").hide();
-				popupState = false;
-			}
+			$(".popup-mask").hide();
+			$(".popup-wrap").hide();
+			
+			$signEmail.focus(); // test 용.. 변수명 바꿔야함
 			
 		});
 		
