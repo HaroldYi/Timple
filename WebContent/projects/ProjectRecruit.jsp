@@ -21,8 +21,7 @@ div#section {
 
 	min-height: 800px;
 	margin-left: -20px;
-	
-	
+		
 }
 
 
@@ -137,6 +136,13 @@ background-color: white;
 
 
 
+
+
+
+
+
+
+
 </style>
 
 
@@ -151,6 +157,42 @@ background-color: white;
 <body>
 
 <%@ include file="/base/header2.jsp"%>
+
+
+
+<div class="popup-mask"></div>
+	<div class="popup-wrap popup-login">
+		<a class="popup-close" href="#">
+			<img src="images/popup_close.png" />
+		</a>
+		<h3>로그인</h3>
+		<div class="left">
+			<h6>이메일주소로 로그인</h6>
+			 <form method="post" id="loginForm">
+				<input type="email" placeholder="이메일" name="email" />
+				<input type="password" placeholder="비밀번호" name="password" />
+				<input class="button login" type="submit" value="로그인" />
+			</form>
+ 		</div>
+		<div class="right">
+			<h6>소셜 네트워크로 간편하게 로그인</h6>
+			<button class="btn fb">
+ 				<span class="icon ic-fb"></span><span> Facebook</span>
+ 			</button>
+			<button class="btn gg">
+				<span class="icon ic-gg"></span><span> Google</span>
+			</button>
+		</div>
+		
+		<div class="bottom">
+			<a href="#">이메일 찾기</a> | 
+			<a href="#">비밀번호 찾기</a>
+		</div>
+	</div>
+
+
+
+
 
 
 
@@ -194,7 +236,7 @@ Building Design project
 <div id="teamCount">팀원수: 7명</div>
 
 
-<input type="button" id="send" name="send"  value="쪽지 보내기"  />
+<input type="button" id="send" name="send"  value="쪽지 보내기"     />
 
 
 </div>
