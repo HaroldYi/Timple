@@ -62,6 +62,7 @@ img {
     
 }
 
+
 #recruit {
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -77,8 +78,8 @@ img {
 }
 
 #search {
-	width: 150px;
-	margin-left: 999px;
+	width: 200px;
+	margin-left: 949px;
 	margin-top: 30px;
 }
 
