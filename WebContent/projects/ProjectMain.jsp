@@ -16,19 +16,14 @@
 <script src="../js/sidemenu/hideshow.js"></script>
 <script src="../js/sidemenu/jquery.tablesorter.min.js"></script>
 <script src="../js/sidemenu/jquery.equalHeight.js"></script>
-<!-- Side Menu Script Start -->
+<!-- Side Menu Script End -->
 
 <!-- Gantt Start -->
-<link rel="stylesheet" type="text/css"
-	href="/css/gantt/jquery-ui-1.8.4.css" />
-<link rel="stylesheet" type="text/css" href="/css/gantt/reset.css" />
-<link rel="stylesheet" type="text/css"
-	href="/css/gantt/jquery.ganttView.css" />
+
 <!-- Gantt End -->
 <style type="text/css">
 #sidebar {
 	float: left;
-	min-height: 700px;
 }
 
 #content {
@@ -37,7 +32,7 @@
 	min-height: 820px;
 	border: 1px solid red;
 }
-
+.user>img{ width: 100px; height: 100px;}
 footer {
 	clear: both;
 }
@@ -46,10 +41,12 @@ footer {
 <body>
 	<%@ include file="../base/header2.jsp"%>
 	<!-- Side Menu Start -->
-	<aside id="sidebar" class="column"
-		style="margin-top: 0px; min-height: 820px;">
+	<aside id="sidebar" class="column" style="margin-top: 0px; min-height: 820px;">
 		<div class="user">
-			<img src="" alt="" />
+			<div id="profile">
+			
+			</div>
+			<img src="/images/member/진호pro.JPG" alt="프로필사진" />
 			<p>
 				John Doe (<a href="#">3 Messages</a>)
 			</p>
@@ -86,59 +83,7 @@ footer {
 	<!-- Side Menu End -->
 	<section>
 		<div id="content">
-			<div id="ganttChart"></div>
-			<br /> <br />
-			<div id="eventMessage"></div>
-
-			<script type="text/javascript" src="/js/gantt/jquery-1.4.2.js"></script>
-			<script type="text/javascript" src="/js/gantt/date.js"></script>
-			<script type="text/javascript" src="/js/gantt/jquery-ui-1.8.4.js"></script>
-			<script type="text/javascript" src="/js/gantt/jquery.ganttView.js"></script>
-			<script type="text/javascript" src="/js/gantt/data.js"></script>
-			<script type="text/javascript">
-				$(function() {
-					$("#ganttChart")
-							.ganttView(
-									{
-										data : ganttData,
-										slideWidth : 728,
-										behavior : {
-											onClick : function(data) {
-												var msg = "You clicked on an event: { start: "
-														+ data.start
-																.toString("M/d/yyyy")
-														+ ", end: "
-														+ data.end
-																.toString("M/d/yyyy")
-														+ " }";
-												$("#eventMessage").text(msg);
-											},
-											onResize : function(data) {
-												var msg = "You resized an event: { start: "
-														+ data.start
-																.toString("M/d/yyyy")
-														+ ", end: "
-														+ data.end
-																.toString("M/d/yyyy")
-														+ " }";
-												$("#eventMessage").text(msg);
-											},
-											onDrag : function(data) {
-												var msg = "You dragged an event: { start: "
-														+ data.start
-																.toString("M/d/yyyy")
-														+ ", end: "
-														+ data.end
-																.toString("M/d/yyyy")
-														+ " }";
-												$("#eventMessage").text(msg);
-											}
-										}
-									});
-
-					// $("#ganttChart").ganttView("setSlideWidth", 600);
-				});
-			</script>
+			
 		</div>
 	</section>
 	<footer>
