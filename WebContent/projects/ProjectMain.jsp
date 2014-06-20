@@ -129,6 +129,7 @@
 	margin: 5px;
 	width: 150px;
 	text-align: center;
+	position: relative;
 }
 
 .pPlan>#p1 {
@@ -141,6 +142,21 @@
 	background-color: yellow;
 }
 
+.pText{ z-index: 10; position:relative;}
+
+#request{ 
+	width:0px; height:100%; 
+	background-color: skyblue; 
+	position: absolute; left: 0px; top: 0px;
+}
+
+#design{
+	width:0px; height:100%; 
+	background-color: #FFD9FA; 
+	position: absolute; left: 0px; top: 0px;
+}
+
+
 #sidebar h3>a:hover {
 	text-decoration: none;
 }
@@ -148,6 +164,12 @@
 #sidebar h3>a {
 	color: #1F1F20;
 }
+
+.add img { width: 30px; height: 30px;}
+.add{ font-size: 11px;}
+.icn_add_user img, .icn_view_users img, .icn_profile img{ 
+	width: 15px; height: 15px; 
+	margin-top: -4px; margin-right: 2px;} 
 
 /* Side Bar CSS End */
 
@@ -186,17 +208,18 @@ footer {
 		<h3>Project Plan</h3>
 		<ul class="toggle">
 			<li class="icn_new_article"><div class="pPlan">
-					요구사항<div id="request"></div></div></li>
+					<span class="pText">요구사항</span><div id="request"></div></div></li>
 			<li class="icn_edit_article"><div class="pPlan">
-					DB 설계<div id="design"></div></div></li>
+					<span class="pText">DB 설계</span><div id="design"></div></div></li>
 			<li class="icn_categories"></li>
 			<li class="icn_tags"></li>
 		</ul>
 		<h3>게시판</h3>
 		<ul class="toggle">
-			<li class="icn_add_user"><a href="#">자유게시판</a></li>
-			<li class="icn_view_users"><a href="#">업무게시판</a></li>
-			<li class="icn_profile"><a href="#">익명게시판</a></li>
+			<li class="icn_add_user"><a href="#"><img src="/images/projectmain/smile.png" alt="dot" />자유게시판</a></li>
+			<li class="icn_view_users"><a href="#"><img src="/images/projectmain/smile.png" alt="dot" />업무게시판</a></li>
+			<li class="icn_profile"><a href="#"><img src="/images/projectmain/smile.png" alt="dot" />익명게시판</a></li>
+			<li class="add"><a href="#"><img src="/images/projectmain/plus.png" alt="더하기" />게시판 추가하기..</a></li>
 		</ul>
 		<h3>
 			<a href="#">예산관리</a>
