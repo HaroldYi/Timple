@@ -134,7 +134,9 @@ width: 430px; height: 300px;
 top: 150px; left: 50%;
 border-radius: 8px; 
 z-index: 1;
-background-color: LemonChiffon;
+background-color: lightgray;
+opacity: 0.7;
+
 
 }
 
@@ -172,7 +174,14 @@ function popup() {
 
 
 
-<div class="popupMemo"></div>
+<div class="popupMemo">
+
+<a class="popup-close" href="#">
+		<img src="images/popup_close.png" />
+</a>
+
+
+</div>
 
 
 	
@@ -211,7 +220,6 @@ Building Design project
 
 
 <div id="content">
-
 
 
 <div id="img"><img src="/images/01.jpg" /></div>
