@@ -21,8 +21,7 @@ div#section {
 
 	min-height: 800px;
 	margin-left: -20px;
-	
-	
+		
 }
 
 
@@ -56,8 +55,6 @@ width: 980px;
 padding: 20px;
 
 
-
-
 }
 
 #detail{
@@ -77,10 +74,6 @@ word-spacing: 3px;
 }
 
 
-
-
-
-
 #article{
 
 
@@ -95,8 +88,6 @@ padding: 20px;
 
 
 }
-
-
 
 
 #img{
@@ -121,8 +112,6 @@ font-weight: bold;
 }
 
 
-
-
 #send{
 
 border: 1px solid gray;
@@ -131,9 +120,53 @@ height: 40px;
 box-shadow: 3px 7px 4px rgba(83, 83, 93, 0.28);
 background-color: white;
 
+}
+
+
+
+.popupMemo{
+
+display: none; 
+position: fixed; 
+margin: 140px 0 0 -335px;
+padding: 20px;
+width: 430px; height: 330px;
+top: 150px; left: 50%;
+border-radius: 8px; 
+z-index: 1;
+background-color: LemonChiffon;
+
+
+
 
 }
 
+
+.popupclose{
+
+display: none; 
+position: fixed; 
+margin-left: 360px;
+
+
+
+
+}
+
+#close{
+
+
+width: 25px;
+height: 25px;
+
+}
+
+
+#msg{
+
+height: 100px;
+
+}
 
 
 
@@ -141,6 +174,19 @@ background-color: white;
 
 
 
+
+<script type="text/javascript">	
+
+function popup() {
+	
+	
+	$(".popupMemo").show();
+	$(".popupclose").show();
+	
+}
+
+
+</script>
 
 </head>
 
@@ -151,6 +197,38 @@ background-color: white;
 <body>
 
 <%@ include file="/base/header2.jsp"%>
+
+
+
+<div class="popupMemo">
+
+<a class="popupclose" href="#">
+		<img src="../images/popup_close.png" id="close" />
+</a>
+
+받는사람
+<br><br>
+<input type="text" id="receive" name="receive"    />
+메세지
+<br><br>
+<input type="text"   id="msg"  name="mag"     />
+
+
+
+
+</div>
+
+
+	
+	
+	
+	
+		
+		
+
+
+
+
 
 
 
@@ -179,7 +257,6 @@ Building Design project
 <div id="content">
 
 
-
 <div id="img"><img src="/images/01.jpg" /></div>
 
 
@@ -194,7 +271,7 @@ Building Design project
 <div id="teamCount">팀원수: 7명</div>
 
 
-<input type="button" id="send" name="send"  value="쪽지 보내기"  />
+<input type="button" id="send" name="send"  value="쪽지 보내기"   onclick= "popup()"      />
 
 
 </div>

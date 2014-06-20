@@ -35,6 +35,7 @@ input[type="text"], input[type="password"], select { border-radius: 3px; }
 	color: #e74c3c !important; 
 	background: url(../images/error.png) no-repeat left center;
 }
+.war-text.wrong.pw { letter-spacing: 0.0001pt; }
 
 /* popup */
 .popup-mask { 
@@ -54,6 +55,7 @@ input[type="text"], input[type="password"], select { border-radius: 3px; }
 	background: #fff;
 	z-index: 1001;
 }
+
 .popup-wrap .popup-close { position: absolute; top: 20px; right: 20px; }
 .popup-wrap .war-text { position: absolute; top: -20px; }
 .popup-wrap .bottom { 
