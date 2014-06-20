@@ -22,12 +22,12 @@
 		<div class="left">
 			<h6>이메일주소로 로그인</h6>
 			 <form method="post" id="loginForm">
-			 <div class="input-wrap">			 
-				<input type="text" placeholder="이메일" name="email" />
-			 </div>
-			 <div class="input-wrap">			 
-				<input type="password" placeholder="비밀번호" name="pw" />
-			 </div>
+				 <div class="input-wrap">			 
+					<input class="enterDefault" type="text" placeholder="이메일" name="email" />
+				 </div>
+				 <div class="input-wrap">			 
+					<input type="password" placeholder="비밀번호" name="pw" />
+				 </div>
 				<input class="button popup" type="submit" value="로그인" />
 			</form>
  		</div>
@@ -46,6 +46,44 @@
 			<a href="#">비밀번호 찾기</a>
 		</div>
 	</div>
+	<div class="popup-wrap popup-findEmail">
+		<a class="popup-close" href="#">
+			<img src="images/popup_close.png" />
+		</a>
+		<h3>이메일 찾기</h3>
+
+		<div class="left">
+			<h6>찾고자 하는 계정의 이름과 전화번호를 입력해 주세요.</h6>
+			 <form method="post" id="loginForm">
+			 <div class="input-wrap">			 
+				<input class="enterDefault" type="text" placeholder="이름" name="name" />
+			 </div>
+			 <div class="row">
+					<div class="small-3 columns" style="padding-left: 0px;">
+						<select class="tel_first" name="tel_first"></select>
+					</div>
+					<div class="small-9 columns" style="padding: 0px;">
+						<input type="text" placeholder="나머지 번호" name="tel" maxlength="8" />
+					</div>
+				</div>
+				<input class="button popup" type="submit" value="로그인" />
+			</form>
+ 		</div>
+		<!-- <div class="right">
+			<h6>소셜 네트워크로 간편하게 로그인</h6>
+			<button class="btn fb">
+ 				<span class="icon ic-fb"></span><span> Facebook</span>
+ 			</button>
+			<button class="btn gg">
+				<span class="icon ic-gg"></span><span> Google</span>
+			</button>
+		</div> -->
+		
+		<div class="bottom">
+			<a href="#">로그인 화면으로 돌아가기</a>
+		</div>
+	</div>
+	
 	
 	<div class="popup-wrap popup-signup">
 		<a class="popup-close" href="#">
@@ -66,7 +104,7 @@
 				</div>
 				<div class="row">
 					<div class="small-3 columns" style="padding-left: 0px;">
-						<select name="tel_first"></select>
+						<select class="tel_first enterDefault" name="tel_first"></select>
 					</div>
 					<div class="small-9 columns" style="padding: 0px;">
 						<input type="text" placeholder="나머지 번호" name="tel" maxlength="8" />
@@ -156,7 +194,7 @@
 		var $tel = $("#signupForm input[name='tel']");
 		
 		$.each(tel_array, function(i, arr) {
-		    $("select[name='tel_first']").append($("<option/>", {
+		    $(".tel_first").append($("<option/>", {
 		        value: arr, text: arr
 		    }));
 		});
