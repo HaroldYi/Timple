@@ -4,7 +4,7 @@
 	<ul class="title-area">
 		<li class="name">
 			<h1>
-				<a href="#">TIMPLE</a>
+				<a href="#">TIMPLE<sup>alpha</sup></a>
 			</h1>
 		</li>
 	</ul>

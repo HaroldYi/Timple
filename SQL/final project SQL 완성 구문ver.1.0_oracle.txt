@@ -1,0 +1,942 @@
+﻿
+
+-- 파이널 프로젝트 sql 구문
+
+
+
+
+
+-- drop 순서 --
+
+DROP TABLE budget;
+DROP TABLE introducepdf;
+DROP TABLE repeat;
+DROP TABLE repeatday;
+DROP TABLE businesslog;
+DROP TABLE businesscomment;
+DROP TABLE teambusiness;
+DROP TABLE business;
+DROP TABLE teambp;
+DROP TABLE BP;
+DROP TABLE teamcalendar;
+DROP TABLE calendar; 
+DROP TABLE permission;
+DROP TABLE teamcomment;
+DROP TABLE teamboard;
+DROP TABLE teamboardsort;
+DROP TABLE teammemo;
+DROP TABLE filelog;
+DROP TABLE data;
+DROP TABLE team;
+DROP TABLE project;
+DROP TABLE occupation;
+DROP TABLE twocategory;
+DROP TABLE onecategory;
+DROP TABLE notice;
+DROP TABLE qandareply;
+DROP TABLE alertmessage;
+DROP TABLE manager;
+DROP TABLE qanda;
+DROP TABLE labor;
+DROP TABLE commentlabor;
+DROP TABLE boardcomment;
+DROP TABLE board;
+DROP TABLE acceptance;
+DROP TABLE paper;
+DROP TABLE friend;
+DROP TABLE memo;
+DROP TABLE memquestion;
+DROP TABLE question;
+DROP TABLE notification;
+DROP TABLE member;
+commit;
+
+
+
+--시퀀스 
+
+CREATE SEQUENCE memberSeq;
+CREATE SEQUENCE notificationSeq;
+CREATE SEQUENCE questionSeq;
+CREATE SEQUENCE memquestionSeq;
+CREATE SEQUENCE memoSeq;
+CREATE SEQUENCE friendSeq;
+CREATE SEQUENCE paperSeq;
+CREATE SEQUENCE acceptanceSeq;
+CREATE SEQUENCE boardSeq;
+CREATE SEQUENCE boardcommentSeq;
+CREATE SEQUENCE commentlaborSeq;
+CREATE SEQUENCE laborSeq;
+CREATE SEQUENCE qandaSeq;
+CREATE SEQUENCE managerSeq;
+CREATE SEQUENCE alertmessageSeq;
+CREATE SEQUENCE qandareplySeq;
+CREATE SEQUENCE noticeSeq;
+CREATE SEQUENCE onecategorySeq;
+CREATE SEQUENCE twocategorySeq;
+CREATE SEQUENCE occupationSeq;
+CREATE SEQUENCE projectSeq;
+CREATE SEQUENCE teamSeq;
+CREATE SEQUENCE dataSeq;
+CREATE SEQUENCE filelogSeq;
+CREATE SEQUENCE teamnoticeSeq;
+CREATE SEQUENCE teammemoSeq;
+CREATE SEQUENCE teamboardsortSeq;
+CREATE SEQUENCE teamboardSeq;
+CREATE SEQUENCE teamcommentSeq;
+CREATE SEQUENCE permissionSeq;
+CREATE SEQUENCE calendarSeq;
+CREATE SEQUENCE teamcalendarSeq;
+CREATE SEQUENCE BPseq;
+CREATE SEQUENCE teambpseq;
+CREATE SEQUENCE businessSeq;
+CREATE SEQUENCE teambusinessSeq;
+CREATE SEQUENCE businesscommentSeq;
+CREATE SEQUENCE businesslogSeq;
+CREATE SEQUENCE repeatdaySeq;
+CREATE SEQUENCE repeatSeq;
+CREATE SEQUENCE introducepdfSeq;
+CREATE SEQUENCE budgetSeq;
+
+
+
+CREATE TABLE member (
+	memberId NUMBER PRIMARY KEY,
+	memberName NVARCHAR2(10) NOT NULL,
+	email NVARCHAR2(50) NOT NULL,
+	tel NVARCHAR2(20) NOT NULL,
+	pw NVARCHAR2(20) NOT NULL,
+	inform nvarchar2(10) NOT NULL,
+	alertCount NUMBER NULL,
+	profile NVARCHAR2(50) NULL
+);
+
+CREATE TABLE notification (
+	NotificationId NUMBER PRIMARY KEY,
+	memseq NUMBER REFERENCES member(memberId) NOT NULL,
+	content NVARCHAR2(1000) NOT NULL,
+	confirm nvarchar2(10) NOT NULL
+);
+
+CREATE TABLE question (
+	questionid NUMBER PRIMARY KEY,
+	content NVARCHAR2(50) NULL
+);
+
+CREATE TABLE memquestion (
+	memquestionId NUMBER PRIMARY KEY,
+	memseq NUMBER REFERENCES member(memberId) NOT NULL,
+	questionSeq NUMBER REFERENCES question(questionid) NOT NULL,
+	quereply NVARCHAR2(50) NULL
+);
+
+CREATE TABLE memo (
+	memoid NUMBER PRIMARY KEY,
+	memseq NUMBER REFERENCES member(memberid) NOT NULL,
+	content NVARCHAR2(100) NULL
+);
+
+CREATE TABLE friend (
+	friendid NUMBER PRIMARY KEY,
+	memseq NUMBER REFERENCES member(memberid) NOT NULL,
+	friendseq NUMBER REFERENCES member(memberid) NOT NULL
+);
+
+CREATE TABLE paper (
+	paperid NUMBER PRIMARY KEY,
+	content NVARCHAR2(50) NOT NULL,
+	regdate DATE NOT NULL,
+	sendmemseq NUMBER REFERENCES member(memberid) NOT NULL,
+	receivememseq REFERENCES member(memberid) NOT NULL
+);
+
+CREATE TABLE acceptance (
+	acceptanceid NUMBER PRIMARY KEY,
+	paperseq NUMBER REFERENCES paper(paperid) NOT NULL,
+	accept NUMBER NULL
+);
+
+CREATE TABLE board (
+	boardid NUMBER PRIMARY KEY,
+	post_type NVARCHAR2(10) NOT NULL,
+	memseq NUMBER REFERENCES member(memberid) NOT NULL,
+	subject NVARCHAR2(200) NOT NULL,
+	content NVARCHAR2(1000) NOT NULL,
+	fontnum NUMBER NOT NULL,
+	regdate DATE DEFAULT(SYSDATE) NOT NULL,
+	readcount NUMBER NOT NULL,
+	readcom NUMBER NOT NULL,
+	imgfilename VARCHAR2(100) NULL,
+	imgorgfilename VARCHAR2(100) NULL,
+	thread NUMBER NOT NULL,
+	depth NUMBER NOT NULL
+);
+
+CREATE TABLE boardcomment (
+	commentid NUMBER PRIMARY KEY,
+	boardseq NUMBER REFERENCES board(boardid) NOT NULL,
+	memseq NUMBER REFERENCES member(memberid) NOT NULL,
+	regdate DATE NOT NULL,
+	content NVARCHAR2(100) NULL
+);
+
+CREATE TABLE commentlabor (
+	commentlaborid NUMBER PRIMARY KEY,
+	commentseq NUMBER REFERENCES boardcomment(commentid) NOT NULL,
+	content NVARCHAR2(200) NOT NULL,
+	reporter NUMBER REFERENCES member(memberid) NULL
+);
+
+CREATE TABLE labor (
+	laborid NUMBER PRIMARY KEY,
+	boardseq NUMBER REFERENCES board(boardid) NOT NULL,
+	laborcontent NVARCHAR2(300) NULL,
+	reporter NUMBER REFERENCES member(memberid) NULL
+);
+
+CREATE TABLE qanda (
+	qnaid NUMBER PRIMARY KEY,
+	memseq NUMBER REFERENCES member(memberid) NOT NULL,
+	Classification NVARCHAR2(100) NOT NULL,
+	subject NVARCHAR2(100) NOT NULL,
+	content NVARCHAR2(1000) NOT NULL,
+	open NVARCHAR2(9) NOT NULL,
+	replystate NVARCHAR2(9) NULL,
+	regdate DATE DEFAULT(SYSDATE) NOT NULL,
+	qkind NVARCHAR2(10) NULL
+);
+
+CREATE TABLE manager (
+	managerid NUMBER PRIMARY KEY,
+	id NVARCHAR2(20) NOT NULL,
+	pw NVARCHAR2(30) NOT NULL
+);
+
+CREATE TABLE alertmessage (
+	alertmessageid NUMBER PRIMARY KEY,
+	managerseq NUMBER REFERENCES manager(managerid) NOT NULL,
+	content NVARCHAR2(1000) NULL,
+	memberseq NUMBER REFERENCES member(memberid) NOT NULL
+);
+
+CREATE TABLE QAndAreply (
+	qnareplyid NUMBER PRIMARY KEY,
+	qandaSeq NUMBER REFERENCES qanda(qnaid) NOT NULL,
+	regdate DATE DEFAULT(SYSDATE) NOT NULL,
+	subject NVARCHAR2(200) NOT NULL,
+	content NVARCHAR2(2000) NOT NULL,
+	managerseq NUMBER REFERENCES manager(managerid) NOT NULL
+);
+
+CREATE TABLE notice (
+	noticeid NUMBER PRIMARY KEY,
+	managerseq NUMBER REFERENCES manager(managerid) NOT NULL,
+	subject NVARCHAR2(100) NOT NULL,
+	content NVARCHAR2(2000) NOT NULL,
+	regdate DATE NOT NULL
+);
+
+CREATE TABLE onecategory (
+	onecategoryid NUMBER PRIMARY KEY,
+	onename NVARCHAR2(40) NOT NULL
+);
+
+CREATE TABLE twocategory (
+	twocategoryid NUMBER PRIMARY KEY,
+	twoname NVARCHAR2(40) NOT NULL,
+	onecategoryseq NUMBER REFERENCES onecategory(onecategoryid) NOT NULL
+);
+
+CREATE TABLE occupation (
+	occupationid NUMBER PRIMARY KEY,
+	memseq NUMBER REFERENCES member(memberid) NOT NULL,
+	twocategoryseq REFERENCES twocategory(twocategoryId) NOT NULL,
+	career NUMBER NOT NULL
+);
+
+CREATE TABLE project (
+	projectid NUMBER PRIMARY KEY,
+	name NVARCHAR2(100) NOT NULL,
+	startday DATE NOT NULL,
+	endday DATE NOT NULL,
+	content NVARCHAR2(1000) NOT NULL,
+	open NVARCHAR2(9) NOT NULL,
+	thumnail NVARCHAR2(100) NULL,
+	twoseq NUMBER REFERENCES twocategory(twocategoryid) NOT NULL
+);
+
+CREATE TABLE team (
+	teamid NUMBER PRIMARY KEY,
+	projectseq NUMBER REFERENCES project(projectid) NOT NULL,
+	memseq NUMBER REFERENCES member(memberid) NOT NULL,
+	grade NUMBER NOT NULL,
+	participation NUMBER NOT NULL
+);
+
+CREATE TABLE data (
+	dataid NUMBER PRIMARY KEY,
+	filename VARCHAR2(100) NOT NULL,
+	orgfilename VARCHAR2(100) NOT NULL,
+	fileexplanation NVARCHAR2(100) NULL,
+	projectseq NUMBER REFERENCES project(projectid) NOT NULL
+);
+
+CREATE TABLE filelog (
+	logid NUMBER PRIMARY KEY,
+	dataseq NUMBER REFERENCES data(dataid) NOT NULL,
+	state NUMBER NOT NULL,
+	editDate DATE NOT NULL,
+	teamseq NUMBER REFERENCES team(teamid) NOT NULL
+);
+
+-- 보류사항
+--CREATE TABLE teamNotice (
+	--noticeid PRIMARY KEY,
+--	memseq NUMBER REFERENCES team(teamid) NOT NULL,
+	--subject NVARCHAR2(100) NOT NULL,
+	--content NVARCHAR2(2000) NOT NULL,
+	--regdate DATE DEFAULT(SYSDATE) NOT NULL
+--);
+
+CREATE TABLE teammemo (
+	teammemoid NUMBER PRIMARY KEY,
+	teamseq NUMBER REFERENCES team(teamid) NOT NULL,
+	subject NVARCHAR2(100) NOT NULL,
+	content NVARCHAR2(1000) NOT NULL,
+	regdate DATE DEFAULT(SYSDATE) NOT NULL,
+	theme NUMBER NULL
+);
+
+CREATE TABLE teamboardsort (
+	teamboardsortid NUMBER PRIMARY KEY,
+	projectseq NUMBER REFERENCES project(projectid) NOT NULL,
+	subject NVARCHAR2(20) NOT NULL,
+	sort NUMBER NOT NULL
+);
+
+CREATE TABLE teamboard (
+	teamboardid NUMBER PRIMARY KEY,
+	subject NVARCHAR2(100) NOT NULL,
+	content NVARCHAR2(1000) NOT NULL,
+	teamseq NUMBER REFERENCES team(teamid) NOT NULL,
+	regdate DATE NOT NULL,
+	readcount NUMBER NOT NULL,
+	filename VARCHAR2(100) NULL,
+	orgfilename VARCHAR2(100) NULL,
+	theme NUMBER NOT NULL,
+	teamboardsortseq NUMBER REFERENCES teamboardsort(teamboardsortid) NOT NULL,
+	teamboardgrade NUMBER NOT NULL
+);
+
+CREATE TABLE teamcomment (
+	teamcommentid NUMBER PRIMARY KEY,
+	teamcomment NVARCHAR2(1000) NOT NULL,
+	regdate DATE DEFAULT(SYSDATE) NOT NULL,
+	teamboardseq NUMBER REFERENCES teamboard(teamboardid) NOT NULL,
+	teamseq NUMBER REFERENCES team(teamid) NOT NULL
+);
+
+CREATE TABLE permission (
+	permissionid NUMBER PRIMARY KEY,
+	teamboardseq NUMBER REFERENCES teamboard(teamboardid) NULL,
+	teamseq NUMBER REFERENCES team(teamid) NULL
+);
+
+CREATE TABLE calendar (
+	calendarid NUMBER PRIMARY KEY,
+	subject NVARCHAR2(100) NOT NULL,
+	content NVARCHAR2(1000) NOT NULL,
+	startday DATE NOT NULL,
+	endday DATE NOT NULL,
+	color NVARCHAR2(10) NULL
+);
+
+CREATE TABLE teamcalendar (
+	teamcalendarid NUMBER PRIMARY KEY,
+	teamseq NUMBER REFERENCES team(teamid) NOT NULL,
+	calendarseq NUMBER REFERENCES calendar(calendarid) NOT NULL
+);
+
+CREATE TABLE BP (
+	bpid NUMBER PRIMARY KEY,
+	projectseq NUMBER REFERENCES project(projectid) NOT NULL,
+	name NVARCHAR2(100) NOT NULL,
+	startday DATE NOT NULL,
+	endday DATE NOT NULL,
+	explanation NVARCHAR2(1000) NULL,
+	state NVARCHAR2(10) NOT NULL
+);
+
+CREATE TABLE teambp (
+	teambpid NUMBER PRIMARY KEY,
+	bpseq NUMBER REFERENCES bp(bpid) NOT NULL,
+	teamseq NUMBER REFERENCES team(teamid) NOT NULL,
+	grade NUMBER NULL
+);
+
+CREATE TABLE business (
+	businessid NUMBER PRIMARY KEY,
+	bpseq NUMBER REFERENCES bp(bpid) NOT NULL,
+	subject NVARCHAR2(100) NOT NULL,
+	filename NVARCHAR2(100) NULL,
+	orgfilename NVARCHAR2(100) NULL,
+	content NVARCHAR2(2000) NOT NULL,
+	state NVARCHAR2(3) NOT NULL,
+	importance NUMBER NOT NULL,
+	editdate DATE NOT NULL,
+	startday DATE NOT NULL,
+	endday DATE NOT NULL
+);
+
+CREATE TABLE teambusiness (
+	teambusinessid NUMBER PRIMARY KEY,
+	businessseq REFERENCES business(businessid) NOT NULL,
+	teambpseq REFERENCES teambp(teambpid) NOT NULL
+);
+
+CREATE TABLE businesscomment (
+	businesscommentid NUMBER PRIMARY KEY,
+	businessseq NUMBER REFERENCES business(businessid) NOT NULL,
+	teamseq NUMBER REFERENCES team(teamid) NOT NULL,
+	content NVARCHAR2(300) NULL
+);
+
+CREATE TABLE businesslog (
+	businesslogid NUMBER PRIMARY KEY,
+	businessseq NUMBER REFERENCES business(businessid) NOT NULL,
+	beforestate NVARCHAR2(200) NOT NULL,
+	afterstate NVARCHAR2(200) NOT NULL,
+	editdate DATE default(sysdate) NOT NULL
+);
+
+CREATE TABLE repeatday (
+	repeatdayid NUMBER PRIMARY KEY,
+	day NVARCHAR2(10) NOT NULL
+);
+
+
+CREATE TABLE repeat (
+	repeatid NUMBER PRIMARY KEY,
+	businessseq REFERENCES business(businessid) NOT NULL,
+	repeatdayseq REFERENCES repeatday(repeatdayid) NULL
+);
+
+CREATE TABLE introducepdf (
+	introducepdfid NUMBER PRIMARY KEY,
+	fimename VARCHAR2(100) NULL,
+	orgfimename VARCHAR2(100) NULL
+);
+
+CREATE TABLE budget (
+	budgetid NUMBER PRIMARY KEY,
+	projectid NUMBER REFERENCES project(projectid) NOT NULL,
+	usage NVARCHAR2(100) NOT NULL,
+	input NUMBER DEFAULT(0) NULL,
+	output NUMBER DEFAULT(0) NULL,
+	btime DATE DEFAULT(SYSDATE) NOT NULL
+);
+
+COMMIT;
+
+
+
+--member 테이블
+
+INSERT INTO member (MEMBERID, membername, email, tel, pw, inform, alertcount, profile)
+VALUES( 1 ,'임현수', 'aaa001@gmail.com' , '010-1223-6434' , '1234'  ,'n' , '0' , '프로필 사진 경로명');
+
+INSERT INTO member (MEMBERID, membername, email, tel, pw, inform, alertcount, profile)
+VALUES( 2 ,'김현덕', 'aaa002@gmail.com' , '010-4123-1938' , '1234'  ,'n' , '0' , '프로필 사진 경로명');
+
+INSERT INTO member (MEMBERID, membername, email, tel, pw, inform, alertcount, profile)
+VALUES( 3 ,'임수희', 'aaa003@gmail.com' , '010-0233-2916' , '1234'  ,'y' , '0' , '프로필 사진 경로명');
+
+INSERT INTO member (MEMBERID, membername, email, tel, pw, inform, alertcount, profile)
+VALUES( 4 ,'김성현', 'aaa004@gmail.com' , '010-8613-7131' , '1234'  ,'n' , '0' , '프로필 사진 경로명');
+
+INSERT INTO member (MEMBERID, membername, email, tel, pw, inform, alertcount, profile)
+VALUES( 5 ,'안지후', 'aaa005@gmail.com' , '010-9813-8249' , '1234'  , 'n' , '0' , '프로필 사진 경로명');
+
+
+
+
+
+--board 테이블
+
+
+INSERT INTO Board (boardId,post_type,memSeq,subject,content,fontNum,regdate,readCount,readCom,imgFileName,imgOrgFileName,thread,depth) 
+VALUES (1,'포스트',1,'안녕하세요','이번에 8월말에 새로 프로젝트를 시작하려고 하는데 경력 2년차 이상 같이 모십니다. ',1,to_date('2014-06-10-12-12-15','YYYY-MM-DD-HH24-MI-SS'),3,5,null,null,1000,1);
+
+INSERT INTO Board (boardId,post_type,memSeq,subject,content,fontNum,regdate,readCount,readCom,imgFileName,imgOrgFileName,thread,depth) 
+VALUES (2,'포스트',2,'이번 프로젝트에 대해...','사정이 있어 프로젝트 시작일짜를 변경할까 합니다.  ',1,to_date('2014-05-20-16-12-15','YYYY-MM-DD-HH24-MI-SS'),2,4,null,null,2000,1);
+
+INSERT INTO Board (boardId,post_type,memSeq,subject,content,fontNum,regdate,readCount,readCom,imgFileName,imgOrgFileName,thread,depth) 
+VALUES (3,'포스트',3,'가입했는데요','여기 쓸만하나요 ㅎㅎ 다른 곳 쓰다가 마음에 안들어서 여기 왔어요',1,to_date('2014-05-28-13-34-19','YYYY-MM-DD-HH24-MI-SS'),12,0, null,null,3000,1);
+
+INSERT INTO Board (boardId,post_type,memSeq,subject,content,fontNum,regdate,readCount,readCom,imgFileName,imgOrgFileName,thread,depth) 
+VALUES (4,'포스트',4,'이 xxx넘아','이성현 이넘아 프로젝트 중도 포기하냐 나쁜넘아',1,to_date('2014-05-29-14-34-19','YYYY-MM-DD-HH24-MI-SS'),103,0, null,null,4000,1);
+
+--select * from board;
+
+
+
+
+
+--boardcomment 테이블
+
+INSERT INTO BoardComment (commentId,boardSeq,memSeq,regdate,content) VALUES (1 , 2 , 4 , to_date('2014-05-20-16-45-42','YYYY-MM-DD-HH24-MI-SS'),'정확한 날짜가 언제인가요 ? ' );
+INSERT INTO BoardComment (commentId,boardSeq,memSeq,regdate,content) VALUES (2 , 2 , 5 , to_date('2014-05-20-16-48-50','YYYY-MM-DD-HH24-MI-SS'),'왜 멋대로 바꾸냐 죽을래? ' );
+
+--select * from boardcomment;
+
+
+
+
+
+-- CommentLabor 테이블
+INSERT INTO CommentLabor (commentLaborId,commentSeq,content,reporter) VALUES (1, 2,'초면인데 막말하시나요 신고 들어갑니다.', 2);
+
+--select * from commentlabor;
+
+
+
+-- Question 테이블 --
+
+INSERT INTO Question (QUESTIONID,CONTENT) VALUES (1, '나의 보물 1호는?');
+INSERT INTO Question (QUESTIONID,CONTENT) VALUES (2, '초등학교 때 가장 친한 친구 이름은?');
+INSERT INTO Question (QUESTIONID,CONTENT) VALUES (3, '아버지의 성함은?');
+INSERT INTO Question (QUESTIONID,CONTENT) VALUES (4, '출신 고등학교 이름은?');
+INSERT INTO Question (QUESTIONID,CONTENT) VALUES (5, '나의 추억의 장소는?');
+
+
+--select * from question;
+
+
+
+-- memQuestion 테이블 --
+
+
+INSERT INTO memQuestion (MEMQUESTIONID,MEMSEQ,QUESTIONSEQ,QUEREPLY) VALUES (1, 1, 1, '자전거');
+INSERT INTO memQuestion (MEMQUESTIONID,MEMSEQ,QUESTIONSEQ,QUEREPLY) VALUES (2, 2, 1, '시계');
+INSERT INTO memQuestion (MEMQUESTIONID,MEMSEQ,QUESTIONSEQ,QUEREPLY) VALUES (3, 3, 4, '배명고등학교');
+INSERT INTO memQuestion (MEMQUESTIONID,MEMSEQ,QUESTIONSEQ,QUEREPLY) VALUES (4, 4, 2, '서경창');
+INSERT INTO memQuestion (MEMQUESTIONID,MEMSEQ,QUESTIONSEQ,QUEREPLY) VALUES (5, 5, 5, '광안리');
+
+
+--select * from memquestion;
+
+
+
+-- Labor 테이블
+INSERT INTO Labor (laborId,boardSeq,laborContent,reporter) VALUES (1, 4 ,'욕은  자제 합시다 ',5);
+
+
+--select * from labor;
+
+
+-- QandA 테이블 
+INSERT INTO QandA (QnAId,memSeq,classification,subject,content,open,replystate,regdate,Qkind) VALUES (1,2,'게시물분류','여기 라이센스 비용은 어떻게 되나요? ','결제를 안하나요? 공짜로 쓰면 제약 있나요?','공개','답변완료',to_date('2014-04-11-10-16-58','YYYY-MM-DD-HH24-MI-SS'),'게시물종류');
+INSERT INTO QandA (QnAId,memSeq,classification,subject,content,open,replystate,regdate,Qkind) VALUES (2,5,'게시물분류','프로젝트 트리 구조에 대하여... ','저희가 업무가 많아서요 하나의 프로젝트에 최대 몇개의 bp를 등록할수 있나요 그리고 하나의 bp안에 최대 몇개의 업무가 등록 가능한가요?','비공개','처리중',to_date('2014-05-03-10-16-58','YYYY-MM-DD-HH24-MI-SS'),'게시물종류');
+
+--select * from qanda;
+
+
+
+
+-- manager 테이블 --
+INSERT INTO manager (managerId, id, pw) VALUES (1,'admin','admin1234');
+
+--select * from manager;
+
+
+
+-- notice 테이블
+
+INSERT INTO notice(NOTICEID, managerSeq, subject , content, regdate) VALUES( 1, 1, '사이트가 다음달에 개편됩니다.', '안녕하십니까 저희 사이트를 방문해주시는 모든 분들께 감사드리며 여러분들의 성원에 힘입어 저희 사이트가 보다 좋은 서비스로 보답하기 위해 3일 동안 접속을 제한합니다. 감사합니다. ', to_date('2014-06-14-14-17-38', 'YYYY-MM-DD-HH24-MI-SS') );
+
+select * from notice;
+
+
+-- QandAReply(답글) 테이블 --여기 a글자 뺏음
+INSERT INTO QandAReply (QnAReplyId,QandASeq,regdate,subject,content,managerSeq) VALUES (1,1,to_date('2014-06-12-14-17-38','YYYY-MM-DD-HH24-MI-SS'),'re:여기 라이센스 비용은 어떻게 되나요?','저희 프로그램은 무료버전과 유료버전이 있고 무료버전은 프로젝트 갯수 생성에 제한이 있습니다. 최대 3개까지 생성할 수 있습니다. ',1);
+
+--select * from qandareply;
+
+
+
+-- Notification 테이블 
+INSERT INTO Notification (NotificationId, memSeq, content, confirm) VALUES (1, 3,'팀원이 탈퇴했습니다.' , 'n');
+INSERT INTO Notification (NotificationId, memSeq, content, confirm) VALUES (2, 1,'업무가 변동되었습니다. ' , 'n');
+INSERT INTO Notification (NotificationId, memSeq, content, confirm) VALUES (3, 2,'업무가 완료되었습니다. ' , 'n');
+
+select * from notification;
+
+
+
+-- alertMessage(경고메세지) -- (alertMessageId:무관)
+INSERT INTO alertMessage (alertMessageId,managerSeq,content,memberSeq) VALUES (1,1,' 게시판에서 욕은 자제해주세요 3번이상 신고접수시 한달 간 저희 사이트에 접속이 제한될 수 있습니다. ', 4 );
+
+--select * from alertmessage;
+
+
+
+
+-- Paper(쪽지) --
+INSERT INTO Paper (PaperId,content,regDate,sendMemSeq,receiveMemSeq) VALUES (1,'현덕아 너의 업무 좀 변경해도 될까?',to_date('2014-06-09-17-42-10','YYYY-MM-DD-HH24-MI-SS'), 1, 2);
+INSERT INTO Paper (PaperId,content,regDate,sendMemSeq,receiveMemSeq) VALUES (2,'어.. 머 상관 없는데 어떤 업무로 바뀌어?',to_date('2014-06-10-13-42-10','YYYY-MM-DD-HH24-MI-SS'), 2, 1);
+INSERT INTO Paper (PaperId,content,regDate,sendMemSeq,receiveMemSeq) VALUES (3,'마케팅 쪽을 맡아주었으면 해 팀원 한명이 탈퇴를 해서 ',to_date('2014-06-10-16-22-10','YYYY-MM-DD-HH24-MI-SS'), 1, 2);
+INSERT INTO Paper (PaperId,content,regDate,sendMemSeq,receiveMemSeq) VALUES (4,'알았어 맡아 볼께 ',to_date('2014-06-11-17-23-10','YYYY-MM-DD-HH24-MI-SS'), 2, 1);
+INSERT INTO Paper (PaperId,content,regDate,sendMemSeq,receiveMemSeq) VALUES (5,'그래 고맙다 자세한 일정은 내일 알려줄께 ',to_date('2014-06-11-18-03-10','YYYY-MM-DD-HH24-MI-SS'), 1, 2);
+INSERT INTO Paper (PaperId,content,regDate,sendMemSeq,receiveMemSeq) VALUES (6,'안지후님 저희 프로젝트에 들어오실래요? ',to_date('2014-06-12-18-03-10','YYYY-MM-DD-HH24-MI-SS'), 1, 5);
+
+--select * from paper;
+
+
+
+
+-- acceptance 테이블  
+-- 1. 확인전 2. 수락. 3. 거부
+
+INSERT INTO acceptance (acceptanceId,paperSeq,accept) VALUES (1,6,1);
+
+--select * from acceptance;
+
+
+
+
+
+-- Memo(메모) -- (memoId:무관)
+INSERT INTO Memo (memoId,memSeq,content) VALUES (1,1,'다음주 화요일에 새로운 프로젝트 진행할 예정');
+INSERT INTO Memo (memoId,memSeq,content) VALUES (2,1,'다음주 수요일에 새로운 프로젝트를 위한 팀원 모집');
+INSERT INTO Memo (memoId,memSeq,content) VALUES (3,1,'프로젝트 생성 이후에 bp등록');
+INSERT INTO Memo (memoId,memSeq,content) VALUES (4,1,'새로운 프로젝트는 2014년 말에 완료할 것');
+INSERT INTO Memo (memoId,memSeq,content) VALUES (5,1,'프로젝트를 위한 에산 확보 중요!!');
+INSERT INTO Memo (memoId,memSeq,content) VALUES (6,2,'다음주에 만들어지는 프로젝트에 합류할 예정');
+INSERT INTO Memo (memoId,memSeq,content) VALUES (7,2,'프로젝트 기간동안 술을 자제 한다. ');
+
+
+--select * from memo;
+
+
+
+
+
+-- oneCategory(1차직종) --
+INSERT INTO oneCategory (oneCategoryId,oneName) VALUES (1,'Marketing');
+INSERT INTO oneCategory (oneCategoryId,oneName) VALUES (2,'It/internet');
+INSERT INTO oneCategory (oneCategoryId,oneName) VALUES (3,'R&D');
+INSERT INTO oneCategory (oneCategoryId,oneName) VALUES (4,'생산제조');
+INSERT INTO oneCategory (oneCategoryId,oneName) VALUES (5,'전문');
+INSERT INTO oneCategory (oneCategoryId,oneName) VALUES (6,'Design');
+
+
+--twoCategory(2차직종)
+INSERT INTO twoCategory (twoCategoryId,twoName,oneCategorySeq) VALUES (1,'광고',1);
+INSERT INTO twoCategory (twoCategoryId,twoName,oneCategorySeq) VALUES (2,'상품기획',1);
+INSERT INTO twoCategory (twoCategoryId,twoName,oneCategorySeq) VALUES (3,'웹기획',2);
+INSERT INTO twoCategory (twoCategoryId,twoName,oneCategorySeq) VALUES (4,'디자인',2);
+INSERT INTO twoCategory (twoCategoryId,twoName,oneCategorySeq) VALUES (5,'프로그래머',2);
+INSERT INTO twoCategory (twoCategoryId,twoName,oneCategorySeq) VALUES (6,'응용프로그래머',2);
+INSERT INTO twoCategory (twoCategoryId,twoName,oneCategorySeq) VALUES (7,'화학',3);
+INSERT INTO twoCategory (twoCategoryId,twoName,oneCategorySeq) VALUES (8,'기계',3);
+INSERT INTO twoCategory (twoCategoryId,twoName,oneCategorySeq) VALUES (9,'건설',3);
+INSERT INTO twoCategory (twoCategoryId,twoName,oneCategorySeq) VALUES (10,'전기',3);
+INSERT INTO twoCategory (twoCategoryId,twoName,oneCategorySeq) VALUES (11,'시공',4);
+INSERT INTO twoCategory (twoCategoryId,twoName,oneCategorySeq) VALUES (12,'설치',4);
+INSERT INTO twoCategory (twoCategoryId,twoName,oneCategorySeq) VALUES (13,'조립',4);
+INSERT INTO twoCategory (twoCategoryId,twoName,oneCategorySeq) VALUES (14,'경영분석',5);
+INSERT INTO twoCategory (twoCategoryId,twoName,oneCategorySeq) VALUES (15,'리서치',5);
+INSERT INTO twoCategory (twoCategoryId,twoName,oneCategorySeq) VALUES (16,'그래픽',6);
+INSERT INTO twoCategory (twoCategoryId,twoName,oneCategorySeq) VALUES (17,'출판',6);
+INSERT INTO twoCategory (twoCategoryId,twoName,oneCategorySeq) VALUES (18,'편집',6);
+INSERT INTO twoCategory (twoCategoryId,twoName,oneCategorySeq) VALUES (19,'의류',6);
+INSERT INTO twoCategory (twoCategoryId,twoName,oneCategorySeq) VALUES (20,'제품',6);
+
+
+
+
+
+-- Occupation(회원-직종) 
+INSERT INTO Occupation (occupationId,memSeq,twocategorySeq,career) VALUES (1,1,4,1);
+INSERT INTO Occupation (occupationId,memSeq,twocategorySeq,career) VALUES (2,2,5,1);
+INSERT INTO Occupation (occupationId,memSeq,twocategorySeq,career) VALUES (3,3,6,3);
+INSERT INTO Occupation (occupationId,memSeq,twocategorySeq,career) VALUES (4,4,6,5);
+INSERT INTO Occupation (occupationId,memSeq,twocategorySeq,career) VALUES (5,5,6,2);
+
+select * from occupation;
+
+
+
+
+
+-- Friend(친구리스트) --
+--INSERT INTO Friend (friendId, memSeq,friendSeq) VALUES (1,1,2); (아직 insert 불가) -- 만들어서 주석 달아 놀것!
+--INSERT INTO Friend (friendId, memSeq,friendSeq) VALUES (2,1,3);
+--INSERT INTO Friend (friendId, memSeq,friendSeq) VALUES (3,1,16);
+--INSERT INTO Friend (friendId, memSeq,friendSeq) VALUES (4,2,13);
+--INSERT INTO Friend (friendId, memSeq,friendSeq) VALUES (5,3,11);
+--INSERT INTO Friend (friendId, memSeq,friendSeq) VALUES (6,5,18);
+--INSERT INTO Friend (friendId, memSeq,friendSeq) VALUES (6,5,19);
+
+
+
+
+
+
+
+-- Project(프로젝트)
+INSERT INTO Project (projectId,name,startDay,endDay,content,open,thumnail,twoSeq) VALUES (1,'은행 윈코스 전산 프로그램',to_date('2014-07-13-01-00-00','YYYY-MM-DD-HH24-MI-SS'),to_date('2016-07-13-12-00-00','YYYY-MM-DD-HH24-MI-SS'),'은행에서 이루어 지는 모든 예금 및 적금과 대출을 위한 통합 전산 프로그램 개발 ',1,'프로젝트의 썸네일 경로명',6);
+INSERT INTO Project (projectId,name,startDay,endDay,content,open,thumnail,twoSeq) VALUES (2,'000회사 회계 솔루션',to_date('2014-08-03-01-00-00','YYYY-MM-DD-HH24-MI-SS'),to_date('2015-08-03-01-00-00','YYYY-MM-DD-HH24-MI-SS'),'회사의 모든 매출목록 및 돈의 사용내역을 기록한 장부를 프로그램으로 구현 ',1,'프로젝트의 썸네일 경로명',6);
+INSERT INTO Project (projectId,name,startDay,endDay,content,open,thumnail,twoSeq) VALUES (3,'000학교 학생관리 프로그램',to_date('2014-09-03-01-00-00','YYYY-MM-DD-HH24-MI-SS'),to_date('2015-09-03-01-00-00','YYYY-MM-DD-HH24-MI-SS'),'총 1000명의 학생들의 데이터베이스를 활용한 모든 활동을 관리하는 통합 솔루션 ',1,'프로젝트의 썸네일 경로명',6);
+
+select * from project;
+
+
+
+
+-- Team(팀원) 
+
+-- 은행 프로젝트에 1번에서 5번 회원이 참여 하고 1번 회원이 팀장이다.
+INSERT INTO Team(teamId,projectSeq,memSeq,grade,participation) VALUES (1,1,1,1,1);
+INSERT INTO Team(teamId,projectSeq,memSeq,grade,participation) VALUES (2,1,2,2,1);
+INSERT INTO Team(teamId,projectSeq,memSeq,grade,participation) VALUES (3,1,3,2,1);
+INSERT INTO Team(teamId,projectSeq,memSeq,grade,participation) VALUES (4,1,4,2,2);
+INSERT INTO Team(teamId,projectSeq,memSeq,grade,participation) VALUES (5,1,5,2,1);
+
+
+-- 회계 솔루션 프로젝트에 1번에서 5번 회원이 참여하고 2번 회원이 팀장이다. 
+INSERT INTO Team(teamId,projectSeq,memSeq,grade,participation) VALUES (6,2,1,2,1);
+INSERT INTO Team(teamId,projectSeq,memSeq,grade,participation) VALUES (7,2,2,1,1);
+INSERT INTO Team(teamId,projectSeq,memSeq,grade,participation) VALUES (8,2,3,2,1);
+INSERT INTO Team(teamId,projectSeq,memSeq,grade,participation) VALUES (9,2,4,2,2);
+INSERT INTO Team(teamId,projectSeq,memSeq,grade,participation) VALUES (10,2,5,2,1);
+
+-- 학생관리 프로젝트에 1번에서 5번 회원이 참여하고 3번 회원이 팀장이다. 
+INSERT INTO Team(teamId,projectSeq,memSeq,grade,participation) VALUES (11,3,1,2,1);
+INSERT INTO Team(teamId,projectSeq,memSeq,grade,participation) VALUES (12,3,2,2,1);
+INSERT INTO Team(teamId,projectSeq,memSeq,grade,participation) VALUES (13,3,3,1,1);
+INSERT INTO Team(teamId,projectSeq,memSeq,grade,participation) VALUES (14,3,4,2,1);
+INSERT INTO Team(teamId,projectSeq,memSeq,grade,participation) VALUES (15,3,5,2,1);
+
+
+--select * from team;
+
+
+
+
+여기까지
+
+-- Budget(예산) --
+INSERT INTO Budget(budgetId,projectId,usage,input,output,bTime) VALUES (1,1,'팀 회비 수거',100000,default,to_date('2014-06-13-10-14-23','YYYY-MM-DD-HH24-MI-SS'));
+INSERT INTO Budget(budgetId,projectId,usage,input,output,bTime) VALUES (2,1,'각종 사무용품 구입',default,15000,to_date('2014-06-14-10-14-23','YYYY-MM-DD-HH24-MI-SS'));
+INSERT INTO Budget(budgetId,projectId,usage,input,output,bTime) VALUES (3,1,'회식비',default,55000,to_date('2014-06-12-10-14-23','YYYY-MM-DD-HH24-MI-SS'));
+INSERT INTO Budget(budgetId,projectId,usage,input,output,bTime) VALUES (4,1,'팀회비 충원',100000 , default ,to_date('2014-06-12-10-14-23','YYYY-MM-DD-HH24-MI-SS'));
+
+--select * from budget;
+
+
+
+-- Data(자료실) --
+INSERT INTO Data (dataId,fileName,orgFileName,fileExplanation,projectSeq) VALUES (1,'프로젝트 요구사항1.pdf','프로젝트 요구사항.pdf','프로젝트 요구사항을 정리한 문서',1);
+INSERT INTO Data (dataId,fileName,orgFileName,fileExplanation,projectSeq) VALUES (2,'프로젝트 요구사항2.pdf','프로젝트 요구사항.pdf','프로젝트 요구사항을 정리한 문서',2);
+INSERT INTO Data (dataId,fileName,orgFileName,fileExplanation,projectSeq) VALUES (3,'프로젝트 요구사항3.pdf','프로젝트 요구사항.pdf','프로젝트 요구사항을 정리한 문서',3);
+INSERT INTO Data (dataId,fileName,orgFileName,fileExplanation,projectSeq) VALUES (4,'팀원역할분담1.pdf','팀원역할분담.pdf','각 팀원들의 해야할일과 범위 ',1);
+
+
+--select * from data;
+
+
+
+
+-- fileLog(파일로그) --
+--즉 팀원번호가 1번인 팀장이 업로드를 했고 나머지 4명의 회원번호 2-5번이 다운로드를 했다. 
+-- 1 : 업로드 2: 다운로드
+INSERT INTO FileLog (logId,dataSeq,state,editDate,teamSeq) VALUES (1,1,1,to_date('2014-06-13-11-23-44','YYYY-MM-DD-HH24-MI-SS'),1);
+INSERT INTO FileLog (logId,dataSeq,state,editDate,teamSeq) VALUES (2,1,2,to_date('2014-06-14-11-45-13','YYYY-MM-DD-HH24-MI-SS'),2);
+INSERT INTO FileLog (logId,dataSeq,state,editDate,teamSeq) VALUES (3,1,2,to_date('2014-06-15-12-49-13','YYYY-MM-DD-HH24-MI-SS'),3);
+INSERT INTO FileLog (logId,dataSeq,state,editDate,teamSeq) VALUES (4,1,2,to_date('2014-06-15-13-43-13','YYYY-MM-DD-HH24-MI-SS'),4);
+INSERT INTO FileLog (logId,dataSeq,state,editDate,teamSeq) VALUES (5,1,2,to_date('2014-06-16-10-41-13','YYYY-MM-DD-HH24-MI-SS'),5);
+
+--select * from filelog;
+
+
+
+
+
+-- Calendar(일정(캘린더)) --
+
+INSERT INTO Calendar (calendarId,subject,content,startDay,endDay,color) VALUES (1,'내일 12시에 만남','서로 인사하는 시간을 가지기 위한 모임이 송파구 잠실 롯데월드 6층 000레스토랑에서 진행될 예정입니다.',to_date('2014-06-13-18-00-00','YYYY-MM-DD-HH24-MI-SS'),to_date('2014-06-13-22-00-00','YYYY-MM-DD-HH24-MI-SS'),'blue');
+INSERT INTO Calendar (calendarId,subject,content,startDay,endDay,color) VALUES (2,'다음주에 회의가 9시에 진행','은행 담당자들과의 만남을 통해 업무를 파악하는 시간입니다.',to_date('2014-06-15-09-00-00','YYYY-MM-DD-HH24-MI-SS'),to_date('2014-06-15-12-00-00','YYYY-MM-DD-HH24-MI-SS'),'red');
+INSERT INTO Calendar (calendarId,subject,content,startDay,endDay,color) VALUES (3,'다음주 수요일은 쉼','공휴일이라 재충전하는 시간을 가질 예정입니다.',to_date('2014-06-17-06-00-00','YYYY-MM-DD-HH24-MI-SS'), to_date('2014-06-17-23-00-00','YYYY-MM-DD-HH24-MI-SS'),'black');
+
+--select * from calendar;
+
+
+
+-- teamcalendar 테이블 오타나서 여기서는 teal로 씀
+--팀원번호 1-5 사람들이 내일 12시에 만남에 참여하기로 예정
+INSERT INTO TEAmCALENDAR (TEAMCALENDARID, TEAMSEQ, calendarseq) VALUES(1, 1, 1);
+INSERT INTO TEAmCALENDAR (TEAMCALENDARID, TEAMSEQ, calendarseq) VALUES(2, 2, 1);
+INSERT INTO TEAmCALENDAR (TEAMCALENDARID, TEAMSEQ, calendarseq) VALUES(3, 3, 1);
+INSERT INTO TEAmCALENDAR (TEAMCALENDARID, TEAMSEQ, calendarseq) VALUES(4, 4, 1);
+INSERT INTO TEAmCALENDAR (TEAMCALENDARID, TEAMSEQ, calendarseq) VALUES(5, 5, 1);
+
+
+
+--팀원번호 1-5 사람들이 다음주에 회의가 9시에 진행을 하기로 예정
+INSERT INTO TEAmCALENDAR (TEAMCALENDARID, TEAMSEQ, calendarseq) VALUES(6, 1, 2);
+INSERT INTO TEAmCALENDAR (TEAMCALENDARID, TEAMSEQ, calendarseq) VALUES(7, 2, 2);
+INSERT INTO TEAmCALENDAR (TEAMCALENDARID, TEAMSEQ, calendarseq) VALUES(8, 3, 2);
+INSERT INTO TEAmCALENDAR (TEAMCALENDARID, TEAMSEQ, calendarseq) VALUES(9, 4, 2);
+INSERT INTO TEAmCALENDAR (TEAMCALENDARID, TEAMSEQ, calendarseq) VALUES(10, 5, 2);
+
+
+--팀원번호 1-5 사람들이 다음주 수요일은 쉬기로 예정
+INSERT INTO TEAmCALENDAR (TEAMCALENDARID, TEAMSEQ, calendarseq) VALUES(11, 1, 3);
+INSERT INTO TEAmCALENDAR (TEAMCALENDARID, TEAMSEQ, calendarseq) VALUES(12, 2, 3);
+INSERT INTO TEAmCALENDAR (TEAMCALENDARID, TEAMSEQ, calendarseq) VALUES(13, 3, 3);
+INSERT INTO TEAmCALENDAR (TEAMCALENDARID, TEAMSEQ, calendarseq) VALUES(14, 4, 3);
+INSERT INTO TEAmCALENDAR (TEAMCALENDARID, TEAMSEQ, calendarseq) VALUES(15, 5, 3);
+
+--select * from teamcalendar;
+
+
+
+--teammemo 테이블
+INSERT INTO teammemo( teammemoid, teamseq, subject, content, regdate, theme ) VALUES 
+(1, 1, '팀원 특성', '각 팀원들의 성격의 장단점 파악하여 적절한 곳의 업무를 분배한다. ', default, null);
+
+INSERT INTO teammemo( teammemoid, teamseq, subject, content, regdate, theme ) VALUES 
+(2, 1, '업무 파악', '프로젝트에 어떠한 업무들이 있는지 파악한다. ', default, null);
+
+select * from teammemo;
+
+
+
+--teamboardsort 테이블
+
+
+INSERT INTO TEAMBOARDSORT (TEAMBOARDSORTID,PROJECTSEQ,SUBJECT,SORT) VALUES(1, 1, '윈코스', 1);
+INSERT INTO TEAMBOARDSORT (TEAMBOARDSORTID,PROJECTSEQ,SUBJECT,SORT) VALUES(2, 2, '더존', 1);
+INSERT INTO TEAMBOARDSORT (TEAMBOARDSORTID,PROJECTSEQ,SUBJECT,SORT) VALUES(3, 3, '더스쿨', 1);
+
+
+--select * from teamboardsort;
+
+
+
+
+--teamboard 테이블
+
+INSERT INTO teamboard(TEAMBOARDID, SUBJECT, content, teamseq, regdate, readcount, filename, orgfilename, theme, teamboardsortseq, teamboardgrade)VALUES(1, '팀원추가 모집에 관하여...', '기존의 팀원으로는 현재 업무를 감당하기가 많이 힘들 것 같습니다. 그래서 2명정도 추가로 팀원을 받을까 하는데 다들 어떻게 생각하세요?', 1, '2014-06-17', 2, null, null, 1 ,1, 2 );
+INSERT INTO teamboard(TEAMBOARDID, SUBJECT, content, teamseq, regdate, readcount, filename, orgfilename, theme, teamboardsortseq, teamboardgrade)VALUES(2, '이번에 새로 들어온 팀원입니다.', '인사 차 글옵립니다. 팀장이랑 예전부터 알고 지낸 사이라서 소개로 들어오게 됐네요 앞으로 잘 부탁드립니다. ', 2, '2014-06-18', 0, null, null, 1 ,1, 1 );
+INSERT INTO teamboard(TEAMBOARDID, SUBJECT, content, teamseq, regdate, readcount, filename, orgfilename, theme, teamboardsortseq, teamboardgrade)VALUES(3, '저도 인사드립니다. ', '저는 아는 사람이 없지만 이번 일을 계기로 친해졌으면 해요', 3, '2014-06-18', 1, null, null, 1 ,1, 1 );
+
+--select * from teamboard;
+
+
+
+--teamcomment 테이블 (팀 게시판의 댓글 테이블)
+--teamboard 2번 게시물에 대한 댓글들
+INSERT INTO teamcomment (TEAMCOMMENTID,TEAMCOMMENT,REGDATE,TEAMBOARDSEQ,TEAMSEQ) VALUES(1, '반가워요 우리 열심히 해봐요', default, 2, 5);
+INSERT INTO teamcomment (TEAMCOMMENTID,TEAMCOMMENT,REGDATE,TEAMBOARDSEQ,TEAMSEQ) VALUES(2, '저도 잘 부탁드립니다. ', default, 2, 3);
+
+--select * from teamcomment;
+
+
+
+--permission 테이블
+-- teamboard의 첫번째 게시물에 대하여 팀원번호가 1번에서 5번까지인 회원만 읽을 수 있다. 
+
+INSERT INTO PERMISSION (PERMISSIONID,TEAMBOARDSEQ,TEAMSEQ) VALUES(1, 1, 1);
+INSERT INTO PERMISSION (PERMISSIONID,TEAMBOARDSEQ,TEAMSEQ) VALUES(2, 1, 2);
+INSERT INTO PERMISSION (PERMISSIONID,TEAMBOARDSEQ,TEAMSEQ) VALUES(3, 1, 3);
+INSERT INTO PERMISSION (PERMISSIONID,TEAMBOARDSEQ,TEAMSEQ) VALUES(4, 1, 4);
+INSERT INTO PERMISSION (PERMISSIONID,TEAMBOARDSEQ,TEAMSEQ) VALUES(5, 1, 5);
+
+--select * from PERMISSION;
+
+
+
+
+--bp 테이블
+
+--은행 프로젝트에 관한 3개의 bp
+INSERT INTO bp (BPID,PROJECTSEQ,NAME,STARTDAY,ENDDAY,EXPLANATION,STATE) VALUES(1, 1, '예금 및 입출금 프로세스', to_date('2014-07-13-01-00-00','YYYY-MM-DD-HH24-MI-SS'),to_date('2015-01-20-12-00-00','YYYY-MM-DD-HH24-MI-SS'),'은행의 기본적인 업무인 입금과 출금, 거기서 파생되는 예금과 적금시스템을 구현','진행중');
+INSERT INTO bp (BPID,PROJECTSEQ,NAME,STARTDAY,ENDDAY,EXPLANATION,STATE) VALUES(2, 1, '대출 및 결제 시스템', to_date('2014-09-13-01-00-00','YYYY-MM-DD-HH24-MI-SS'),to_date('2015-04-20-12-00-00','YYYY-MM-DD-HH24-MI-SS'),'대출금액과 대출금리, 기간을 활용한 각종 대출상품과 그에 대한 시스템을 구축','진행중');
+INSERT INTO bp (BPID,PROJECTSEQ,NAME,STARTDAY,ENDDAY,EXPLANATION,STATE) VALUES(3, 1, '인사관리 및 프로그램 관리', to_date('2014-10-23-01-00-00','YYYY-MM-DD-HH24-MI-SS'),to_date('2015-10-22-12-00-00','YYYY-MM-DD-HH24-MI-SS'),'프로그램에 상품을 추가 혹은 삭제하거나 금액이나 기간 , 이율을 조정하거나 그에 대한 권한을 정할 때 어떠한 직원들이 쓸 수 있는지에 대한 시스템','진행중');
+
+--select * from bp;
+
+
+--teambp 테이블
+-- 1: 일반  2: 책임자
+-- 예금에 관해서는 팀번호가 2번인 회원이 책임자
+-- 대출에 관해서는 팀번호가 3번인 회원이 책임자
+-- 인사에 관해서는 팀번호가 5번인 회원이 책임자
+-- 팀번호 1번과 4번은 그냥 일반
+INSERT INTO teambp (teambpid, bpseq, teamseq, grade) VALUES(1, 1, 2, 2);
+INSERT INTO teambp (teambpid, bpseq, teamseq, grade) VALUES(2, 2, 3, 2);
+INSERT INTO teambp (teambpid, bpseq, teamseq, grade) VALUES(3, 3, 5, 2);
+INSERT INTO teambp (teambpid, bpseq, teamseq, grade) VALUES(4, 1, 1, 1);
+INSERT INTO teambp (teambpid, bpseq, teamseq, grade) VALUES(5, 2, 4, 1);
+
+--select * from teambp;
+
+
+-- business  테이블
+-- 업무 중요도 -- 1: 하 2: 중 3: 상
+INSERT INTO business (businessid, bpseq, subject, filename, orgfilename, content , state, importance, editdate, startday, endday) VALUES(1, 1, 'input과 output 기능 업무', null, null, '돈이 들어올때 총 잔액이 더해지고 나갈 때 마이너스되게 하는 기능', '대기', 2, to_date('2014-06-12-13-30-00','YYYY-MM-DD-HH24-MI-SS'),  to_date('2014-07-16-13-30-00','YYYY-MM-DD-HH24-MI-SS'),  to_date('2014-07-29-13-30-00','YYYY-MM-DD-HH24-MI-SS') );
+INSERT INTO business (businessid, bpseq, subject, filename, orgfilename, content , state, importance, editdate, startday, endday) VALUES(2, 1, '트렌잭션과 금리계산', null, null, '돈이 동시에 입금되거나 출금될시 순서가 어긋나는 것을 방지하기 위한 기능과 예금 만기시 돌려주어야할 금액 계산하는 기능', '대기', 3, to_date('2014-06-12-13-30-00','YYYY-MM-DD-HH24-MI-SS'),  to_date('2014-08-19-13-30-00','YYYY-MM-DD-HH24-MI-SS'),  to_date('2014-07-29-13-30-00','YYYY-MM-DD-HH24-MI-SS') );
+INSERT INTO business (businessid, bpseq, subject, filename, orgfilename, content , state, importance, editdate, startday, endday) VALUES(3, 2, '상황방식에 따른 금리 적용', null, null, '만기에 돈을 일시로 갚는 만기일시상환과 이자와 원금을 균등하게 나누어 갚는 균등분할상환 방식을 구현하는 기능', '대기', 3, to_date('2014-06-12-13-30-00','YYYY-MM-DD-HH24-MI-SS'),  to_date('2015-01-17-13-30-00','YYYY-MM-DD-HH24-MI-SS'),  to_date('2015-01-29-13-30-00','YYYY-MM-DD-HH24-MI-SS') );
+INSERT INTO business (businessid, bpseq, subject, filename, orgfilename, content , state, importance, editdate, startday, endday) VALUES(4, 3, '직급에 다른 접근권한', null, null, '회사의 직원들의 직급에 따라 프로그램을 수정할 수 있는 권한의 범위를 결정 할 것 ', '대기', 3, to_date('2014-06-12-13-30-00','YYYY-MM-DD-HH24-MI-SS'),  to_date('2014-12-17-13-30-00','YYYY-MM-DD-HH24-MI-SS'),  to_date('2015-01-27-13-30-00','YYYY-MM-DD-HH24-MI-SS') );
+
+
+--select * from business;
+
+
+--businesscomment 테이블
+--2번 업무에 대해 팀원번호가 2번인 사람이 댓글을 달음
+--2번 업무에 대해 팀원번호가 4번인 사람이 댓글을 달음
+INSERT INTO businesscomment( businesscommentid , businessseq, teamseq, content) VALUES (1,2,2 ,'기능이 좀 겹치는 것 같은데 같이 공유해요' );  
+INSERT INTO businesscomment( businesscommentid , businessseq, teamseq, content) VALUES (2,2,4 ,'저도요' );  
+
+--select * from  businesscomment;
+
+
+--teambusiness 테이블 
+--1번 업무(예금)은 팀번호가 2번인 사람이 책임
+--2번 업무(예금)은 팀번호가 1번인 사람이 책임
+--3번 업무(대출)는 팀번호가 3번인 사람이 책임
+--4번 업무(인사)는 팀번호가 5번인 사람이 책임
+INSERT INTO teambusiness(teambusinessid, businessseq, teambpseq) VALUES(1, 1, 1);
+INSERT INTO teambusiness(teambusinessid, businessseq, teambpseq) VALUES(2, 2, 4);
+INSERT INTO teambusiness(teambusinessid, businessseq, teambpseq) VALUES(3, 3, 2);
+INSERT INTO teambusiness(teambusinessid, businessseq, teambpseq) VALUES(4, 4, 3);
+
+
+--select * from teambusiness;
+
+
+--businesslog 테이블
+--1번 업무에 대한 변경내역
+INSERT INTO businessLog(businesslogid, businessseq, beforestate , afterstate, editdate) VALUES(1, 1, 'input과 output 둘다 구현', 'input만 구현, output은 나중에 구현', default);
+
+--select * from businesslog;
+
+
+--repeatday 테이블
+
+INSERT INTO repeatday (repeatdayid , day) VALUES (1, '월,수');
+
+select * from repeatday;
+
+
+--repeat 테이블
+
+
+-- 2번 업무는 월,수에 반복된다. 
+INSERT INTO repeat (repeatid , businessseq, repeatdayseq) VALUES ( 1, 2, 1);  
+
+
+

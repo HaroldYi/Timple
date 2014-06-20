@@ -5,7 +5,7 @@
 	<ul class="title-area">
 		<li class="name">
 			<h1>
-				<a href="./index.jsp">TIMPLE</a>
+				<a href="./index.jsp">TIMPLE<sup>alpha</sup></a>
 			</h1>
 		</li>
 	</ul>
@@ -18,8 +18,8 @@
 		</ul>
 		<!-- Right Nav Section -->
 		<ul class="right">
-			<li onclick="mypj();" >
-				<a href="#">나의 프로젝트</a>
+			<li id = "mp">
+				<a href="#" id="mpic">나의 프로젝트</a>
 				<c:if test="${project == null }">
 				<div class="pop" id="mypj">
 					<%-- <c:forEach items="${project != null}"> --%>
