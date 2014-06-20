@@ -133,13 +133,29 @@ function man() {
 	}
 }
 
-	jQuery("*").click(function(e) {
-		console.log(e.target);
-		if ((jQuery(e.target).is("#maicon") || jQuery(e.target).is("#ma") || !(jQuery(e.target).is("#mail_pop")) && jQuery("#mail_pop").css("display") == "block")) {
-//			alert("test");
-			
-		}
-		if (jQuery("#mail_pop").css("display") == "block") {
-			alert(jQuery("#mail_pop").css("display"));
-		}
-	});
+jQuery("*").click(function(e) {
+	e.stopPropagation();
+	e.preventDefault();
+
+	var evt = jQuery(e.target);
+
+	if ((evt.attr("id") == "ma" || evt.attr("id") == "maicon")) {
+		mail();
+	} else if ((evt.attr("id") == "me" || evt.attr("id") == "meicon")) {
+		memo();
+	} else if ((evt.attr("id") == "no" || evt.attr("id") == "nicon")) {
+		noti();
+	} else if ((evt.attr("id") == "us" || evt.attr("id") == "manicon")) {
+		man();
+	} else {
+		jQuery("#mail_pop").hide();
+		jQuery("#maicon").attr("src", "/images/mail.png");
+		jQuery("#memo_pop").hide();
+		jQuery("#meicon").attr("src", "/images/memo.png");
+		jQuery("#noti_pop").hide();
+		jQuery("#nicon").attr("src", "/images/noti.png");
+		jQuery("#man_pop").hide();
+		jQuery("#manicon").attr("src", "/images/man.png");
+		jQuery("#user > a").css("color", "#FFFFFF");
+	}
+});

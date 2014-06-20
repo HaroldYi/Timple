@@ -32,7 +32,7 @@
 					</div>
 				</c:if>
 			</li>
-			<li onclick="mail();">
+			<li>
 				<a href="#" id = "ma"><img id = "maicon" src="/images/mail.png" class="hicon" /></a>
 				<c:if test="${mail == null }">
 				<div id="mail_pop" class="pop">	
@@ -42,8 +42,8 @@
 				</div>
 				</c:if>
 			</li>
-			<li onclick="memo();">
-				<a href="#"><img id = "meicon" src="/images/memo.png" class="hicon" /></a>
+			<li>
+				<a href="#" id="me"><img id = "meicon" src="/images/memo.png" class="hicon" /></a>
 				<c:if test="${memo == null }">
 				<div id="memo_pop" class="pop">
 					<c:forEach items="${memo }" var="mail">
@@ -52,8 +52,8 @@
 				</div>
 				</c:if>
 			</li>
-			<li onclick="noti();">
-				<a href="#"><img id = "nicon" src="/images/noti.png" class="hicon" /></a>
+			<li>
+				<a href="#" id="no"><img id = "nicon" src="/images/noti.png" class="hicon" /></a>
 				<c:if test="${noti == null }">
 				<div id="noti_pop" class="pop">
 					<c:forEach items="${noti }" var="mail">
@@ -62,8 +62,8 @@
 				</div>
 				</c:if>
 				</li>
-			<li id ="user" onclick="man();">
-				<a href="#"><img id = "manicon" src="/images/man.png" class="hicon" />&nbsp;&nbsp;&nbsp;안 상욱</a>
+			<li id ="user">
+				<a href="#" id="us"><img id = "manicon" src="/images/man.png" class="hicon" />&nbsp;&nbsp;&nbsp;안 상욱</a>
 				<c:if test="${man == null }">
 				<div id="man_pop" class="pop">
 					<div id="profile">
