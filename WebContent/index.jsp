@@ -14,6 +14,8 @@
 	<%@ include file="/base/header2.jsp" %>
 	
 	<div class="popup-mask"></div>
+	
+	
 	<div class="popup-wrap popup-login">
 		<a class="popup-close" href="#">
 			<img src="images/popup_close.png" />
@@ -45,7 +47,10 @@
 			<a href="#">이메일 찾기</a> | 
 			<a href="#">비밀번호 찾기</a>
 		</div>
+		
+		
 	</div>
+<<<<<<< HEAD
 	<div class="popup-wrap popup-findEmail">
 		<a class="popup-close" href="#">
 			<img src="images/popup_close.png" />
@@ -83,6 +88,10 @@
 			<a href="#">로그인 화면으로 돌아가기</a>
 		</div>
 	</div>
+=======
+	
+	
+>>>>>>> branch 'master' of https://github.com/Monds/Timple.git
 	
 	
 	<div class="popup-wrap popup-signup">

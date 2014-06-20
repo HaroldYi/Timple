@@ -132,3 +132,14 @@ function man() {
 		jQuery("#meicon").attr("src", "/images/memo.png");
 	}
 }
+
+	jQuery("*").click(function(e) {
+		console.log(e.target);
+		if ((jQuery(e.target).is("#maicon") || jQuery(e.target).is("#ma") || !(jQuery(e.target).is("#mail_pop")) && jQuery("#mail_pop").css("display") == "block")) {
+//			alert("test");
+			
+		}
+		if (jQuery("#mail_pop").css("display") == "block") {
+			alert(jQuery("#mail_pop").css("display"));
+		}
+	});

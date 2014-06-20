@@ -37,11 +37,12 @@ img {
 
 	margin-left: 45%;
 	margin-top: 20px;
-	border: 1px solid black;
-	width: 160px;
+	border: 1px solid gray;
+	width: 180px;
+	height: 40px;
 	text-align: center;
 	font-size: 16px;
-	padding: 5px;
+	padding: 10px;
 	font-weight: bold;
 	background-color: lightgray;
 	
@@ -81,6 +82,8 @@ img {
 	width: 200px;
 	margin-left: 949px;
 	margin-top: 30px;
+	box-shadow: 3px 7px 4px rgba(83, 83, 93, 0.28);
+	
 }
 
 
