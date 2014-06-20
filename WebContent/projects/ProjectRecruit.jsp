@@ -9,10 +9,6 @@
 <link rel="stylesheet" href="../css/common.css" />
 <script src="../js/vendor/modernizr.js"></script>
 
-
-
-
-
 <style type="text/css">
 
 
@@ -124,6 +120,22 @@ background-color: white;
 
 
 
+#send1{
+
+border: 1px solid gray;
+width: 150px;
+height: 40px;
+box-shadow: 3px 7px 4px rgba(83, 83, 93, 0.28);
+background-color: white;
+
+}
+
+
+
+
+
+
+
 .popupMemo{
 
 display: none; 
@@ -146,7 +158,7 @@ background-color: LemonChiffon;
 
 display: none; 
 position: fixed; 
-margin-left: 360px;
+margin-left: 368px;
 
 
 
@@ -156,8 +168,8 @@ margin-left: 360px;
 #close{
 
 
-width: 25px;
-height: 25px;
+width: 20px;
+height: 20px;
 
 }
 
@@ -165,6 +177,13 @@ height: 25px;
 #msg{
 
 height: 100px;
+
+}
+
+
+span{
+
+font-weight: bold;
 
 }
 
@@ -186,6 +205,11 @@ function popup() {
 }
 
 
+
+
+
+
+
 </script>
 
 </head>
@@ -200,20 +224,21 @@ function popup() {
 
 
 
-<div class="popupMemo">
+<div class="popupMemo"  >
 
-<a class="popupclose" href="#">
-		<img src="../images/popup_close.png" id="close" />
+<a class="popupclose"  href="ProjectRecruit.jsp"    >
+		<img src="../images/popup_close.png" id="close"    />
 </a>
 
-받는사람
+<span>받는사람</span>
 <br><br>
 <input type="text" id="receive" name="receive"    />
-메세지
+<span>메세지</span>
 <br><br>
-<input type="text"   id="msg"  name="mag"     />
+<textarea rows="1" cols="3"  id="msg"  name="msg" ></textarea>
 
 
+<input type="button" id="send1" name="send1"  value="쪽지 보내기"  />
 
 
 </div>
@@ -264,14 +289,11 @@ Building Design project
 
 <div id="startday">시작일     : 2014-06-04</div>
 
-
 <div id="projectName">프로젝트 팀장: king wang jjang</div>
-
 
 <div id="teamCount">팀원수: 7명</div>
 
-
-<input type="button" id="send" name="send"  value="쪽지 보내기"   onclick= "popup()"      />
+<input type="button" id="send" name="send"  value="쪽지 보내기"   onclick= "popup()"   />
 
 
 </div>
