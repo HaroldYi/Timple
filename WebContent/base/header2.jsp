@@ -19,7 +19,7 @@
 		<!-- Right Nav Section -->
 		<ul class="right">
 			<li><a href="#">프로젝트 둘러보기</a></li>
-			<li><a href="#">로그인</li>
+			<li><a href="#" id="loginBtn">로그인</a></li>
 		</ul>
 
 	</section>
