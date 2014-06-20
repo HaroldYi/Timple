@@ -20,7 +20,7 @@
 	</c:if>
 
 	<h3>템플릿입니다.</h3>
-
+	
 	<%@ include file="/base/footer.jsp"%>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="/js/foundation.min.js"></script>

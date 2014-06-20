@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<nav class="top-bar" data-topbar>
+<nav class="top-bar" data-topbar >
 	<ul class="title-area">
 		<li class="name">
 			<h1>
@@ -10,7 +10,7 @@
 		</li>
 	</ul>
 
-	<section class="top-bar-section">
+	<section class="top-bar-section" >
 		<!-- Left Nav Section -->
 		<ul class="left">
 			<li><a href="#">프로젝트 등록</a></li>
@@ -33,7 +33,7 @@
 				</c:if>
 			</li>
 			<li onclick="mail();">
-				<a href="#"><img id = "maicon" src="/images/mail.png" class="hicon" /></a>
+				<a href="#" id = "ma"><img id = "maicon" src="/images/mail.png" class="hicon" /></a>
 				<c:if test="${mail == null }">
 				<div id="mail_pop" class="pop">	
 					<c:forEach items="${mail }" var="mail">
