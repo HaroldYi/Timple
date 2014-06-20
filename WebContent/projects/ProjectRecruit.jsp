@@ -128,14 +128,15 @@ background-color: white;
 
 display: none; 
 position: fixed; 
-margin: 170px 0 0 -335px;
-padding: 30px;
-width: 430px; height: 300px;
+margin: 140px 0 0 -335px;
+padding: 20px;
+width: 430px; height: 330px;
 top: 150px; left: 50%;
 border-radius: 8px; 
 z-index: 1;
-background-color: lightgray;
-opacity: 0.8;
+background-color: LemonChiffon;
+
+
 
 
 }
@@ -146,14 +147,26 @@ opacity: 0.8;
 display: none; 
 position: fixed; 
 margin-left: 360px;
-width: 30px; 
-height: 30px;
+
 
 
 
 }
 
+#close{
 
+
+width: 25px;
+height: 25px;
+
+}
+
+
+#msg{
+
+height: 100px;
+
+}
 
 
 
@@ -190,8 +203,17 @@ function popup() {
 <div class="popupMemo">
 
 <a class="popupclose" href="#">
-		<img src="../images/popup_close.png" />
+		<img src="../images/popup_close.png" id="close" />
 </a>
+
+받는사람
+<br><br>
+<input type="text" id="receive" name="receive"    />
+메세지
+<br><br>
+<input type="text"   id="msg"  name="mag"     />
+
+
 
 
 </div>
