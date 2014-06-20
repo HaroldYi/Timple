@@ -17,7 +17,7 @@
 		border-collapse: collapse;
 		border: 1px solid gray;
 		width: 1000px;
-		margin: 0 auto;		
+		margin: 0 auto;			
 	}
 	
 	#tblBoard th, #tblBoard td {
