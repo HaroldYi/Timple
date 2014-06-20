@@ -41,6 +41,7 @@
 	float: left;
 	width: 972px;
 	min-height: 820px;
+	border-left: 1px solid #333;
 	/* border: 1px solid red; */
 }
 
@@ -99,13 +100,6 @@
 .project{ background-color: #73d7a1;}
 .file, .task, .tasklist, .project{ width: 70px; float: left;}
 
-/* #classify {
-	border: 1px solid black;
-	width: 50px;
-	text-align: center;
-	background-color: skyblue;
-} */
-
 #today{
 	margin: 0px auto;
 	width: 800px;
@@ -147,11 +141,6 @@
 	background-color: yellow;
 }
 
-.user {
-	border: 1px solid red;
-	margin: 10px;
-}
-
 #sidebar h3>a:hover {
 	text-decoration: none;
 }
@@ -169,10 +158,21 @@ footer {
 
 <script>
 	$(document).ready(function(){
-		var width = 50;
+		var total = 50;
+		var request = 80;
+		var design = 50;
+		
 		$("#ing").animate({
-			width: width + "%"
-		});	
+			width: total + "%"
+		}, 1000);
+		
+		$("#request").animate({
+			width: request + "%"
+		}, 1000);
+		
+		$("#design").animate({
+			width: design + "%"
+		}, 1000);
 	});
 </script>
 </head>
@@ -183,20 +183,12 @@ footer {
 	</div>
 	<!-- Side Menu Start -->
 	<aside id="sidebar" class="column">
-		<!-- <div class="user">
-			<img src="/images/member/진호pro.JPG" alt="프로필사진" />
-			<p>
-				John Doe (<a href="#">3 Messages</a>)
-			</p>
-			<a class="logout_user" href="#" title="Logout">Logout</a>
-		</div> -->
-
 		<h3>Project Plan</h3>
 		<ul class="toggle">
-			<li class="icn_new_article"><div id="request" class="pPlan">
-					요구사항</div></li>
-			<li class="icn_edit_article"><div id="design" class="pPlan">
-					DB 설계</div></li>
+			<li class="icn_new_article"><div class="pPlan">
+					요구사항<div id="request"></div></div></li>
+			<li class="icn_edit_article"><div class="pPlan">
+					DB 설계<div id="design"></div></div></li>
 			<li class="icn_categories"></li>
 			<li class="icn_tags"></li>
 		</ul>
