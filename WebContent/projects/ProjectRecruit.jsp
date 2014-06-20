@@ -135,7 +135,20 @@ top: 150px; left: 50%;
 border-radius: 8px; 
 z-index: 1;
 background-color: lightgray;
-opacity: 0.7;
+opacity: 0.8;
+
+
+}
+
+
+.popupclose{
+
+display: none; 
+position: fixed; 
+margin-left: 360px;
+width: 30px; 
+height: 30px;
+
 
 
 }
@@ -155,7 +168,7 @@ function popup() {
 	
 	
 	$(".popupMemo").show();
-	
+	$(".popupclose").show();
 	
 }
 
@@ -176,8 +189,8 @@ function popup() {
 
 <div class="popupMemo">
 
-<a class="popup-close" href="#">
-		<img src="images/popup_close.png" />
+<a class="popupclose" href="#">
+		<img src="../images/popup_close.png" />
 </a>
 
 
