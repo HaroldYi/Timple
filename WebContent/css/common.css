@@ -3,6 +3,7 @@
 
 h3 { font-weight: bold; }
 h6 { font-size: 0.8em; }
+h6 b { color: #008cba; }
 input[type="text"], input[type="password"], select { border-radius: 3px; }
 .check-label { font-weight: bold; font-size: 0.8em; }
 
@@ -47,7 +48,7 @@ input[type="text"], input[type="password"], select { border-radius: 3px; }
 	z-index: 1000; 
 }
 .popup-wrap {	
-	display: none; position: fixed; 
+	display: none; position: absolute; 
 	margin: 0 0 0 -335px; padding: 40px;
 	width: 670px; height: auto;
 	top: 150px; left: 50%;
@@ -55,7 +56,8 @@ input[type="text"], input[type="password"], select { border-radius: 3px; }
 	background: #fff;
 	z-index: 1001;
 }
-
+.popup-wrap.popup-find { width: 355px; margin: 0 0 0 -178px; }
+.popup-wrap.popup-find.resetPw .button { margin-bottom: 0px; }
 .popup-wrap .popup-close { position: absolute; top: 20px; right: 20px; }
 .popup-wrap .war-text { position: absolute; top: -20px; }
 .popup-wrap .bottom { 
@@ -76,8 +78,9 @@ input[type="text"], input[type="password"], select { border-radius: 3px; }
 .popup-wrap input[type="text"], .popup-wrap input[type="password"], .popup-wrap select { margin-bottom: 1.7rem; } 
 .popup-wrap .left { width: 50%; padding-right: 20px; }
 .popup-wrap .right { width: 50%; height: 175px; padding-left: 20px; border-left: 1px solid #ebeff1; }
+.popup-wrap .middle { width: 100%; }
+.popup-wrap form { margin-bottom: 0px; }
 .popup-signup .right { height: 240px; }
-.popup-login #loginForm { margin-bottom: 0px; }
 
 /* 임시 header, footer css */
 #footer { font-size: 0.8em; width: auto; height: 80px; background-color: #CCC; padding: 10px; line-height: 50px; margin-top: 10px;}

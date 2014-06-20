@@ -15,7 +15,6 @@
 	
 	<div class="popup-mask"></div>
 	
-	
 	<div class="popup-wrap popup-login">
 		<a class="popup-close" href="#">
 			<img src="images/popup_close.png" />
@@ -42,28 +41,24 @@
 				<span class="icon ic-gg"></span><span> Google</span>
 			</button>
 		</div>
-		
 		<div class="bottom">
-			<a href="#">이메일 찾기</a> | 
-			<a href="#">비밀번호 찾기</a>
+			<a href="#" id="findEmailBtn">이메일 찾기</a> | 
+			<a href="#" id="findPwBtn">비밀번호 찾기</a>
 		</div>
-		
-		
 	</div>
-<<<<<<< HEAD
-	<div class="popup-wrap popup-findEmail">
+
+	<div class="popup-wrap popup-find email">
 		<a class="popup-close" href="#">
 			<img src="images/popup_close.png" />
 		</a>
 		<h3>이메일 찾기</h3>
-
-		<div class="left">
-			<h6>찾고자 하는 계정의 이름과 전화번호를 입력해 주세요.</h6>
-			 <form method="post" id="loginForm">
-			 <div class="input-wrap">			 
-				<input class="enterDefault" type="text" placeholder="이름" name="name" />
-			 </div>
-			 <div class="row">
+		<div class="middle">
+			<h6>이름과 전화번호를 입력해 주세요.</h6>
+			 <form method="post" id="findEmailForm">
+				 <div class="input-wrap">			 
+					<input class="enterDefault" type="text" placeholder="이름" name="name" />
+				 </div>
+				 <div class="row">
 					<div class="small-3 columns" style="padding-left: 0px;">
 						<select class="tel_first" name="tel_first"></select>
 					</div>
@@ -71,28 +66,67 @@
 						<input type="text" placeholder="나머지 번호" name="tel" maxlength="8" />
 					</div>
 				</div>
-				<input class="button popup" type="submit" value="로그인" />
+				<input class="button popup" type="submit" value="이메일 찾기" />
 			</form>
  		</div>
-		<!-- <div class="right">
-			<h6>소셜 네트워크로 간편하게 로그인</h6>
-			<button class="btn fb">
- 				<span class="icon ic-fb"></span><span> Facebook</span>
- 			</button>
-			<button class="btn gg">
-				<span class="icon ic-gg"></span><span> Google</span>
-			</button>
-		</div> -->
-		
 		<div class="bottom">
 			<a href="#">로그인 화면으로 돌아가기</a>
 		</div>
 	</div>
-=======
+
+	<div class="popup-wrap popup-find pw">
+		<a class="popup-close" href="#">
+			<img src="images/popup_close.png" />
+		</a>
+		<h3>비밀번호 찾기</h3>
+		<div class="middle">
+			<h6>이름과 이메일 주소를 입력해 주세요.</h6>
+			 <form method="post" id="findPwForm">
+				 <div class="input-wrap">			 
+					<input class="enterDefault" type="text" placeholder="이름" name="name" />
+				 </div>
+				<div class="input-wrap">
+					<input type="text" placeholder="이메일" name="email" />
+				</div>
+				<input class="button popup" type="submit" value="질문 보기" />
+			</form>
+ 		</div>
+		<div class="bottom">
+			<a href="#">로그인 화면으로 돌아가기</a>
+		</div>
+	</div>
 	
+	<div class="popup-wrap popup-find pw2">
+		<a class="popup-close" href="#">
+			<img src="images/popup_close.png" />
+		</a>
+		<h3>비밀번호 찾기</h3>
+		<div class="middle">
+			<h6>회원정보에 등록한 질문과 답변을 입력해 주시면 임시 비밀번호를 발급해 드립니다. 로그인하셔서 마이페이지에서 비밀번호 변경 꼭 해주세요!</h6>
+			 <form method="post" id="resetPwForm">
+				<h6><b>질문.</b> 야 답 무조건 1번이다.</h6>
+				<div class="input-wrap">
+					<input type="text" placeholder="답변" name="answer" />
+				</div>
+				<input class="button popup" type="submit" value="임시 비밀번호 발급" />
+			</form>
+ 		</div>
+		<div class="bottom">
+			<a href="#">로그인 화면으로 돌아가기</a>
+		</div>
+	</div>
 	
->>>>>>> branch 'master' of https://github.com/Monds/Timple.git
-	
+	<div class="popup-wrap popup-find resetPw">
+		<a class="popup-close" href="#">
+			<img src="images/popup_close.png" />
+		</a>
+		<h3>비밀번호 찾기</h3>
+		<div class="middle">
+			<h6>임시 비밀번호가 발급되었습니다. 이번엔 기억하기 쉬운걸로 바꿔주세요.</h6>
+			<h6><b>임시 비밀번호.</b> r0a5i#g14</h6>
+			<input class="button popup" type="submit" value="확인" />
+ 		</div>
+	</div>
 	
 	<div class="popup-wrap popup-signup">
 		<a class="popup-close" href="#">
@@ -213,7 +247,7 @@
 		// $("#test").click(function() {
 			
 		//$(".popup-mask").show();
-		//$(".popup-login").show();
+		//$(".popup-find.resetPw").show();
 		
 		//});
 		 
@@ -223,6 +257,16 @@
 			$(".popup-mask").show();
 			$(".popup-login").show();
 			$loginEmail.focus();
+		});
+		
+		$("#findEmailBtn").click(function(e) {
+			$(".popup-wrap").hide();
+			$(".popup-find.email").show();
+		});
+		
+		$("#findPwBtn").click(function(e) {
+			$(".popup-wrap").hide();
+			$(".popup-find.pw2").show();
 		});
 		
 		function login() {
