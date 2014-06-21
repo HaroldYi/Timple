@@ -1,4 +1,4 @@
-package com.timple.encrypt;
+package visang.timple.util;
 import java.security.*;
 import javax.crypto.*;
 import javax.crypto.spec.DESKeySpec;
