@@ -13,7 +13,9 @@ public class BbsDTO {
 	private String imgOrgFileName;
 	private int thread;
 	private int depth;
-	
+
+	private String name;
+
 	public String getBoardId() {
 		return boardId;
 	}
@@ -108,6 +110,14 @@ public class BbsDTO {
 
 	public void setDepth(int depth) {
 		this.depth = depth;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
