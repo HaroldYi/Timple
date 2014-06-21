@@ -106,7 +106,7 @@
 			<td>${dto.name}</td>
 			<td>${dto.regDate}</td>
 			<td>${dto.readCount}</td>
-			<td>${dto.readCom}</td>
+			<td>${dto.recomCount}</td>
 		</tr>
 		</c:forEach>
 	</table> <br />

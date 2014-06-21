@@ -44,7 +44,7 @@ public class BbsDTO {
 		return subject;
 	}
 
-	public void setsubject(String subject) {
+	public void setSubject(String subject) {
 		this.subject = subject;
 	}
 

@@ -7,7 +7,9 @@
 <mapper namespace="Bbs">
 
 	<select id="getList" resultType="BbsDTO">
-		select boardId, post_type, subject, name, regDate, readCount, readCom from board b inner join member m on b.memseq = m.memberId;
+		select boardId, post_type, subject, name, regDate, readCount, recomCount 
+		from board b 
+		inner join member m on b.memseq = m.memberId;
 	</select>
 
 </mapper>

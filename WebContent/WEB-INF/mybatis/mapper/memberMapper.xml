@@ -11,10 +11,10 @@
 		from   onecategory
 	</select>
 	
-	<select id="getTwoCategory" parameterType="" resultType="String">
+	<select id="getTwoCategory" parameterType="int" resultType="String">
 		select twoname
 		from   twocategory
-		where  onecategoryseq = #{}
+		where  onecategoryseq = #{onecategoryseq}
 	</select>
 
 </mapper>
