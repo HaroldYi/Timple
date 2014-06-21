@@ -4,10 +4,7 @@ html, div, map, dt, isindex, form, header, aside, section, section, article, foo
     display: block;  
 } 
 
-html, body {
-height: 100%;
-margin: 0;
-padding: 0;
+aside{
 font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
 background: #F8F8F8;
 font-size: 12px;
@@ -26,7 +23,7 @@ color: #77BACE;
 text-decoration: none;
 }
 
-a:hover {
+aside a:hover {
 text-decoration: underline;
 }
 
@@ -193,11 +190,11 @@ margin: 0 5px;
 /* Sidebar */
 
 aside#sidebar {
-width: 23%;
-background: #E0E0E3 url(../images/sidebar.png) repeat;
+width: 290px; /* 23% */
+background: #FFFEF0 url(../images/sidebar.png) repeat;
 float: left;
-min-height: 500px;
-margin-top: -4px;
+min-height: 820px;
+
 }
 
 #sidebar hr {

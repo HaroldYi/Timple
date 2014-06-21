@@ -8,6 +8,8 @@
 <title>Timple</title>
 <link rel="stylesheet" href="../css/timple.css" />
 <link rel="stylesheet" href="../css/common.css" />
+<link rel="stylesheet" href="/css/header.css" />
+<link rel="stylesheet" href="/css/projectmain.css" />
 <script src="../js/vendor/modernizr.js"></script>
 <!-- Side Menu Script Start-->
 <link rel="stylesheet" href="../css/sidemenu/layout.css" media="screen" />
@@ -16,129 +18,101 @@
 <script src="../js/sidemenu/hideshow.js"></script>
 <script src="../js/sidemenu/jquery.tablesorter.min.js"></script>
 <script src="../js/sidemenu/jquery.equalHeight.js"></script>
-<!-- Side Menu Script Start -->
+<script src="/js/header.js"></script>
+<!-- Side Menu Script End -->
 
-<!-- Gantt Start -->
-<link rel="stylesheet" type="text/css"
-	href="/css/gantt/jquery-ui-1.8.4.css" />
-<link rel="stylesheet" type="text/css" href="/css/gantt/reset.css" />
-<link rel="stylesheet" type="text/css"
-	href="/css/gantt/jquery.ganttView.css" />
-<!-- Gantt End -->
 <style type="text/css">
-#sidebar {
-	float: left;
-	min-height: 700px;
-}
 
-#content {
-	float: left;
-	width: 972px;
-	min-height: 820px;
-	border: 1px solid red;
-}
-
-footer {
-	clear: both;
-}
 </style>
+
+<script>
+	$(document).ready(function(){
+		var total = 50;
+		var request = 80;
+		var design = 50;
+		
+		$("#ing").animate({
+			width: total + "%"
+		}, 1000);
+		
+		$("#request").animate({
+			width: request + "%"
+		}, 1000);
+		
+		$("#design").animate({
+			width: design + "%"
+		}, 1000);
+	});
+</script>
 </head>
 <body>
-	<%@ include file="../base/header2.jsp"%>
+	<%@ include file="../base/header.jsp"%>
+	<div id="title">
+		<p>ElepamT 프로젝트</p>
+	</div>
 	<!-- Side Menu Start -->
-	<aside id="sidebar" class="column"
-		style="margin-top: 0px; min-height: 820px;">
-		<div class="user">
-			<img src="" alt="" />
-			<p>
-				John Doe (<a href="#">3 Messages</a>)
-			</p>
-			<!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
-		</div>
-
-		<h3>Content</h3>
-		<ul class="toggle">
-			<li class="icn_new_article"><a href="#">New Article</a></li>
-			<li class="icn_edit_article"><a href="#">Edit Articles</a></li>
-			<li class="icn_categories"><a href="#">Categories</a></li>
-			<li class="icn_tags"><a href="#">Tags</a></li>
-		</ul>
-		<h3>Users</h3>
-		<ul class="toggle">
-			<li class="icn_add_user"><a href="#">Add New User</a></li>
-			<li class="icn_view_users"><a href="#">View Users</a></li>
-			<li class="icn_profile"><a href="#">Your Profile</a></li>
-		</ul>
-		<h3>Media</h3>
-		<ul class="toggle">
-			<li class="icn_folder"><a href="#">File Manager</a></li>
-			<li class="icn_photo"><a href="#">Gallery</a></li>
-			<li class="icn_audio"><a href="#">Audio</a></li>
-			<li class="icn_video"><a href="#">Video</a></li>
-		</ul>
-		<h3>Admin</h3>
-		<ul class="toggle">
-			<li class="icn_settings"><a href="#">Options</a></li>
-			<li class="icn_security"><a href="#">Security</a></li>
-			<li class="icn_jump_back"><a href="#">Logout</a></li>
-		</ul>
-	</aside>
+	<%@include file="../base/sidemenu.jsp"%>
 	<!-- Side Menu End -->
 	<section>
 		<div id="content">
-			<div id="ganttChart"></div>
-			<br /> <br />
-			<div id="eventMessage"></div>
+			<div id="progress" class="title">
+				<h4>프로젝트 진행률<span>(50%)</span></h4>
+				<div id="box1">
+					<div id="ing"></div>
+				</div>
+			</div>
 
-			<script type="text/javascript" src="/js/gantt/jquery-1.4.2.js"></script>
-			<script type="text/javascript" src="/js/gantt/date.js"></script>
-			<script type="text/javascript" src="/js/gantt/jquery-ui-1.8.4.js"></script>
-			<script type="text/javascript" src="/js/gantt/jquery.ganttView.js"></script>
-			<script type="text/javascript" src="/js/gantt/data.js"></script>
-			<script type="text/javascript">
-				$(function() {
-					$("#ganttChart")
-							.ganttView(
-									{
-										data : ganttData,
-										slideWidth : 728,
-										behavior : {
-											onClick : function(data) {
-												var msg = "You clicked on an event: { start: "
-														+ data.start
-																.toString("M/d/yyyy")
-														+ ", end: "
-														+ data.end
-																.toString("M/d/yyyy")
-														+ " }";
-												$("#eventMessage").text(msg);
-											},
-											onResize : function(data) {
-												var msg = "You resized an event: { start: "
-														+ data.start
-																.toString("M/d/yyyy")
-														+ ", end: "
-														+ data.end
-																.toString("M/d/yyyy")
-														+ " }";
-												$("#eventMessage").text(msg);
-											},
-											onDrag : function(data) {
-												var msg = "You dragged an event: { start: "
-														+ data.start
-																.toString("M/d/yyyy")
-														+ ", end: "
-														+ data.end
-																.toString("M/d/yyyy")
-														+ " }";
-												$("#eventMessage").text(msg);
-											}
-										}
-									});
+			<div id="today" class="title">
+				<h4>오늘의 팀 일정</h4>
+				<div id="todo">
+					<p>09 : 00 ~ 10 : 00 팀 뷰어를 이용한 회의 시작</p>
+					<hr />
+					<p>12 : 00 ~ 13 : 00 팀 점심 회식</p>
+					<hr />
+					<p>12 : 00 ~ 13 : 00 팀 점심 회식</p>
+					<hr />
+					<p>12 : 00 ~ 13 : 00 팀 점심 회식</p>
+					<hr />
+					<p>12 : 00 ~ 13 : 00 팀 점심 회식</p>
+					<hr />
+				</div>
+			</div>
+			<div id="overview" class="title">
+				<h4>OverView</h4>
+				<div id="overview2" class="title">
+					<div class="viewcontents">
+						<div class="label file">File</div>
+						<div class="viewTitle">신촌에서 회의하기</div>
+						<div class="viewDate">13:05</div>
+						<div class="viewUser">by 안상욱</div>
+					</div>
+					<div class="viewcontents">
+						<div class="label task">Task</div>
+						<div class="viewTitle">신촌에서 회의하기</div>
+						<div class="viewDate">13:05</div>
+						<div class="viewUser">by 안상욱</div>
+					</div>
+					<div class="viewcontents">
+						<div class="label tasklist">Task List</div>
+						<div class="viewTitle">신촌에서 회의하기</div>
+						<div class="viewDate">13:05</div>
+						<div class="viewUser">by 안상욱</div>
+					</div>
+					<div class="viewcontents">
+						<div class="label project">Project</div>
+						<div class="viewTitle">신촌에서 회의하기</div>
+						<div class="viewDate">13:05</div>
+						<div class="viewUser">by 안상욱</div>
+					</div>
+					<div class="viewcontents">
+						<div class="label file">File</div>
+						<div class="viewTitle">신촌에서 회의하기</div>
+						<div class="viewDate">13:05</div>
+						<div class="viewUser">by 안상욱</div>
+					</div>
+				</div>
+			</div>
 
-					// $("#ganttChart").ganttView("setSlideWidth", 600);
-				});
-			</script>
 		</div>
 	</section>
 	<footer>

@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+.pop {
+	display: none;
+	background-color: fff;
+	width: 300px; 
+	border: 1px solid black; 
+	position: absolute;
+	right: 20px; 
+	top: 45px;
+}
+
+.box {
+	width:300px;
+	border-bottom: 1px solid gray;
+}
+
+#profile {
+	width: 250px; 
+	height: 200px;
+	border-bottom: 1px solid gray; 
+}
+
+#profile > h3 {
+	margin: 30px;
+	margin-left: 100px;
+}
+
+#profile > img {
+	margin: 30px;
+	margin-left: 140px;
+}
