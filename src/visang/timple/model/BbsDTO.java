@@ -40,7 +40,6 @@ public class BbsDTO {
 		this.memberSeq = memberSeq;
 	}
 
-
 	public String getsubject() {
 		return subject;
 	}
