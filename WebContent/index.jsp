@@ -159,17 +159,13 @@
 			<div class="right">
 				 <h6>추가 입력 정보 (선택사항)</h6>
 				 <select class="enterDefault" name="oneCategory" id="oneCategory">
-				 		<option value="0">업종 대분류</option>
-					 <c:forEach items="${oneCategoryList}" var="name" varStatus="loop">
-					 	<option value="${loop.index + 1}">${name}</option>
+				 	<option value="0">업종 대분류</option>
+					 <c:forEach items="${oneCategoryList}" var="oneName" varStatus="loop">
+					 <option value="${loop.index + 1}">${oneName}</option>
 					 </c:forEach>
 				 </select>
-				 <select class="enterDefault" name="twocategory">
-				 	<option value="">2차 직종</option>
-				 	<option value="">2차 직종</option>
-				 	<option value="">2차 직종</option>
-				 	<option value="">2차 직종</option>
-				 	<option value="">2차 직종</option>
+				 <select class="enterDefault" name="twocategory" id="twoCategory">
+				 	<option value="0">업종 소분류</option>
 				 </select>
 				 <select class="enterDefault" name="career">
 				 	<option value="">경력</option>
@@ -235,7 +231,7 @@
 		var $tel_first = $("#signupForm select[name='tel_first']"); // option:selected
 		var $tel = $("#signupForm input[name='tel']");
 		
-		$.each(tel_array, function(i, arr) {
+		$.each(tel_array, function(index, arr) {
 		    $(".tel_first").append($("<option/>", {
 		        value: arr, text: arr
 		    }));
@@ -245,7 +241,14 @@
 			if ($(this).val() != 0) {
 				
 				$.ajax({
-					
+					url: "/ajax_twocategory.vs?oneCategorySeq=" + $(this).val(),
+					success: function(xml) {
+						$(xml).find("twoName").each(function(index, arr) {
+							$("#twoCategory").append($("<option/>", {
+								value: index + 1, text: arr
+							}));
+						});
+					}
 				});
 			}
 		});
