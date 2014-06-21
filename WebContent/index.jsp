@@ -158,12 +158,11 @@
 			</div>
 			<div class="right">
 				 <h6>추가 입력 정보 (선택사항)</h6>
-				 <select class="enterDefault" name="onecategory">
-				 	<option value="">1차 직종</option>
-				 	<option value="">1차 직종</option>
-				 	<option value="">1차 직종</option>
-				 	<option value="">1차 직종</option>
-				 	<option value="">1차 직종</option>
+				 <select class="enterDefault" name="oneCategory" id="oneCategory">
+				 		<option value="0">업종 대분류</option>
+					 <c:forEach items="${oneCategoryList}" var="name" varStatus="loop">
+					 	<option value="${loop.index + 1}">${name}</option>
+					 </c:forEach>
 				 </select>
 				 <select class="enterDefault" name="twocategory">
 				 	<option value="">2차 직종</option>
@@ -240,6 +239,15 @@
 		    $(".tel_first").append($("<option/>", {
 		        value: arr, text: arr
 		    }));
+		});
+		
+		$("#oneCategory").change(function() {
+			if ($(this).val() != 0) {
+				
+				$.ajax({
+					
+				});
+			}
 		});
 		
 		$signEmail.focus();

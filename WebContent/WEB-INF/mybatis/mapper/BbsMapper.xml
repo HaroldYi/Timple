@@ -6,7 +6,7 @@
 
 <mapper namespace="bbs">
 
-	<select id="getList" resultType="visang.timple.model.BbsDTO">
+	<select id="getList" resultType="BbsDTO">
 		select * from board;
 	</select>
 
