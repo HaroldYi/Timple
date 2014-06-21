@@ -15,6 +15,7 @@ public class BbsDTO {
 	private int depth;
 
 	private String name;
+	private int rowNum;
 
 	public String getBoardId() {
 		return boardId;
@@ -118,6 +119,14 @@ public class BbsDTO {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public int getRowNum() {
+		return rowNum;
+	}
+
+	public void setRowNum(int rowNum) {
+		this.rowNum = rowNum;
 	}
 
 }

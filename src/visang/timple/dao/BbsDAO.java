@@ -21,14 +21,27 @@ public class BbsDAO implements BbsImpl {
 		this.sqlSession = sqlSession;
 	}
 	
-	// 예제 Memo에 있던 DAO 구현 내용..
 	@Override
-	public List<BbsDTO> list() {
-		
-		List<BbsDTO> list = new ArrayList<BbsDTO>();
-		list = sqlSession.selectList("Bbs.getList");
-		System.out.println(list.get(0).getName());
-		return list;
+	public List<BbsDTO> list1() {
+		List<BbsDTO> list1 = new ArrayList<BbsDTO>();
+		list1 = sqlSession.selectList("Bbs.getList1");
+		return list1;
 	}
+	
+	@Override
+	public List<BbsDTO> list2() {
+		List<BbsDTO> list2 = new ArrayList<BbsDTO>();
+		list2 = sqlSession.selectList("Bbs.getList2");
+		return list2;
+	}
+	
+	@Override
+	public List<BbsDTO> list3() {
+		
+		List<BbsDTO> list3 = new ArrayList<BbsDTO>();
+		list3 = sqlSession.selectList("Bbs.getList3");
+		return list3;
+	}
+
 
 }

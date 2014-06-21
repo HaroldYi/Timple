@@ -98,17 +98,42 @@
 			<th>조회</th>
 			<th>추천</th>
 		</tr>
-		<c:forEach items="${list}" var="dto">
+		<!-- 공지사항 3개 가져오기 -->
+		<c:forEach items="${list1}" var="dto1">
 		<tr>
-			<td>${dto.post_type}</td>
-			<td>${dto.boardId}</td>
-			<td>${dto.subject}</td>
-			<td>${dto.name}</td>
-			<td>${dto.regDate}</td>
-			<td>${dto.readCount}</td>
-			<td>${dto.recomCount}</td>
+			<td>${dto1.rowNum}</td>
+			<td>${dto1.boardId}</td>
+			<td>${dto1.subject}</td>
+			<td>${dto1.name}</td>
+			<td>${dto1.regDate}</td>
+			<td>${dto1.readCount}</td>
+			<td>${dto1.recomCount}</td>
 		</tr>
 		</c:forEach>
+		<!-- 추천글 3개 가져오기 -->
+		<c:forEach items="${list2}" var="dto2">
+		<tr>
+			<%-- <td>${dto2.post_type}</td>
+			<td>${dto2.boardId}</td>
+			<td>${dto2.subject}</td>
+			<td>${dto2.name}</td>
+			<td>${dto2.regDate}</td>
+			<td>${dto2.readCount}</td>
+			<td>${dto2.recomCount}</td> --%>
+		</tr>
+		</c:forEach>
+		<!-- 게시물 10개 가져오기 -->
+		<%-- <c:forEach items="${list3}" var="dto3">
+		<tr>
+			<td>${dto3.post_type}</td>
+			<td>${dto3.boardId}</td>
+			<td>${dto3.subject}</td>
+			<td>${dto3.name}</td>
+			<td>${dto3.regDate}</td>
+			<td>${dto3.readCount}</td>
+			<td>${dto3.recomCount}</td>
+		</tr>
+		</c:forEach> --%>
 	</table> <br />
 	
 	<!-- 페이징 버튼 위치 -->
@@ -144,7 +169,7 @@
 			
 		<input type="text" name="txtSearch" id="txtSearch" placeholder="이곳에 검색어를 입력하세요." />
 		
-		<input type="button" id="searchBtn" value="검색" />
+		<input type="button" id="searchBtn" value="검 색" />
 	</div>
 	
 	<br />

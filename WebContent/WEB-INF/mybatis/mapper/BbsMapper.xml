@@ -5,9 +5,22 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Bbs">
+	
+	<select id="getList1" resultType="BbsDTO">
+		select @ROWNUM := @ROWNUM + 1 as rowNum, boardId, post_type, subject, name, date_format(regDate, '%Y-%m-%d %H:%m:%i') as regDate , readCount, recomCount 
+		from (select @ROWNUM := 0) ROWNUM, board b 
+		inner join member m on b.memSeq = m.memberId 
+		where b.post_type = '공지' and rowNum <![CDATA[ < 3 ]]> order by regDate DESC;
+	</select>
 
-	<select id="getList" resultType="BbsDTO">
-		select boardId, post_type, subject, name, regDate, readCount, recomCount 
+	<select id="getList2" resultType="BbsDTO">
+		select boardId, post_type, subject, name, date_format(regDate, '%Y-%m-%d') as regDate, readCount, recomCount 
+		from board b 
+		inner join member m on b.memseq = m.memberId;
+	</select>
+	
+	<select id="getList3" resultType="BbsDTO">
+		select boardId, post_type, subject, name, date_format(regDate, '%Y-%m-%d') as regDate, readCount, recomCount 
 		from board b 
 		inner join member m on b.memseq = m.memberId;
 	</select>
