@@ -4,7 +4,7 @@ public class BbsDTO {
 	private String boardId;
 	private String post_type;
 	private int memberSeq;
-	private String subjet;
+	private String subject;
 	private String content;
 	private String regDate;
 	private int readCount;
@@ -40,12 +40,12 @@ public class BbsDTO {
 		this.memberSeq = memberSeq;
 	}
 
-	public String getSubjet() {
-		return subjet;
+	public String getSubject() {
+		return subject;
 	}
 
-	public void setSubjet(String subjet) {
-		this.subjet = subjet;
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 
 	public String getContent() {

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import visang.timple.dao.impl.MemberDaoImpl;
 
@@ -26,7 +27,8 @@ public class IndexController {
 	}
 	
 	@RequestMapping(value="/ajax_twocategory.vs", method=RequestMethod.GET)
-	public String ajaxTwoCategory(HttpServletRequest req, String oneCategorySeq) {
+	public String ajaxTwoCategory(HttpServletRequest req, 
+			@RequestParam("oneCategorySeq") String oneCategorySeq) {
 		
 		List<String> twoCategoryList = dao.getTwoCategory(Integer.parseInt(oneCategorySeq));
 		req.setAttribute("twoCategoryList", twoCategoryList);
