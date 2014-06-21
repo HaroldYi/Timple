@@ -27,6 +27,7 @@ public class BbsDAO implements BbsImpl {
 		
 		List<BbsDTO> list = new ArrayList<BbsDTO>();
 		list = sqlSession.selectList("Bbs.getList");
+		System.out.println(list.get(0).getName());
 		return list;
 	}
 

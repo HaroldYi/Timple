@@ -21,7 +21,7 @@ public class BbsController {
 	private BbsImpl dao;
 	
 	// 게시판 리스트 불러오기
-	@RequestMapping(method={RequestMethod.GET}, value="/bbs/BbsList.vs")
+	@RequestMapping(value="/bbs/BbsList.vs", method={RequestMethod.GET})
 	public String list(HttpServletRequest req) {
 		
 		// 1. DAO 위임 -> 목록 select
@@ -30,6 +30,7 @@ public class BbsController {
 		// iBatis 에서는 Object로 받아야한다!
 		List<BbsDTO> list = dao.list();
 		
+		System.out.println("list 반환");
 		req.setAttribute("list", list);
 
 		return "/bbs/BbsList.jsp";
