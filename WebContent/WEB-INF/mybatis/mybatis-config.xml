@@ -8,10 +8,9 @@
 		<setting name="defaultExecutorType" value="REUSE" />
 	</settings>
 
-	<!-- <typeAliases>
-		<typeAlias type="com.sp.test.MyBatisDto" alias="MyBatisDto" />
-		<typeAlias type="com.sp.memo.MemoDto" alias="memo" />
-	</typeAliases> -->
+	<typeAliases>
+		<typeAlias type="visang.timple.model.BbsDTO" alias="BbsDTO" />
+	</typeAliases>
 	
 </configuration>
 
