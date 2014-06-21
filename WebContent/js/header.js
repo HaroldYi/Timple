@@ -5,6 +5,37 @@
 function mypj() {
 	var temp = jQuery("#mypj");
 	temp.toggle();
+	
+	if (temp.css("display") == "none") {
+		jQuery("#mpic").css("color", "#FFFFFF");
+	} else if (temp.css("display") == "block") {
+		jQuery("#mpic").css("color", "#00BAFF");
+	}
+	
+	var memo = jQuery("#memo_pop");
+	if (memo.css("display") != "none") {
+		memo.toggle();
+		jQuery("#meicon").attr("src", "/images/memo.png");
+	}
+
+	var man = jQuery("#man_pop");
+	if (man.css("display") != "none") {
+		man.toggle();
+		jQuery("#manicon").attr("src", "/images/man.png");
+		jQuery("#user > a").css("color", "#FFFFFF");
+	}
+
+	var noti = jQuery("#noti_pop");
+	if (noti.css("display") != "none") {
+		noti.toggle();
+		jQuery("#nicon").attr("src", "/images/noti.png");
+	}
+	
+	var mail = jQuery("#mail_pop");
+	if (mail.css("display") != "none") {
+		mail.toggle();
+		jQuery("#maicon").attr("src", "/images/mail.png");
+	}
 }
 
 function mail() {
@@ -35,6 +66,12 @@ function mail() {
 		noti.toggle();
 		jQuery("#nicon").attr("src", "/images/noti.png");
 	}
+	
+	var project = jQuery("#mypj");
+	if (project.css("display") != "none") {
+		project.toggle();
+		jQuery("#user > a").css("color", "#FFFFFF");
+	}
 }
 
 function memo() {
@@ -63,6 +100,12 @@ function memo() {
 	if (noti.css("display") != "none") {
 		noti.toggle();
 		jQuery("#nicon").attr("src", "/images/noti.png");
+	}
+	
+	var project = jQuery("#mypj");
+	if (project.css("display") != "none") {
+		project.toggle();
+		jQuery("#mypj > a").css("color", "#FFFFFF");
 	}
 }
 
@@ -93,6 +136,12 @@ function noti() {
 	if (memo.css("display") != "none") {
 		memo.toggle();
 		jQuery("#meicon").attr("src", "/images/memo.png");
+	}
+	
+	var project = jQuery("#mypj");
+	if (project.css("display") != "none") {
+		project.toggle();
+		jQuery("#mypj > a").css("color", "#FFFFFF");
 	}
 }
 
@@ -131,6 +180,12 @@ function man() {
 		memo.toggle();
 		jQuery("#meicon").attr("src", "/images/memo.png");
 	}
+	
+	var project = jQuery("#mypj");
+	if (project.css("display") != "none") {
+		project.toggle();
+		jQuery("#mypj > a").css("color", "#FFFFFF");
+	}
 }
 
 jQuery("*").click(function(e) {
@@ -147,6 +202,8 @@ jQuery("*").click(function(e) {
 		noti();
 	} else if ((evt.attr("id") == "us" || evt.attr("id") == "manicon")) {
 		man();
+	} else if ((evt.attr("id") == "mp" || evt.attr("id") == "mpic")) {
+		mypj();
 	} else {
 		jQuery("#mail_pop").hide();
 		jQuery("#maicon").attr("src", "/images/mail.png");
@@ -157,5 +214,8 @@ jQuery("*").click(function(e) {
 		jQuery("#man_pop").hide();
 		jQuery("#manicon").attr("src", "/images/man.png");
 		jQuery("#user > a").css("color", "#FFFFFF");
+		jQuery("#mypj").hide();
+		jQuery("#mpic").css("color", "#FFFFFF");
+	
 	}
 });

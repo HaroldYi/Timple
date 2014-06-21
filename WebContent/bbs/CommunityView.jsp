@@ -9,13 +9,14 @@
 <link rel="stylesheet" href="/css/timple.css" />
 <link rel="stylesheet" href="/css/common.css" />
 <script src="/js/vendor/modernizr.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <style type="text/css">
 
 	h2 { text-align: center; }
 	
 	#index {
-		width: 1500px;
+		width: 1540px;
 		height: 650px;
 		margin: 0 auto;
 		padding-top: 25px;
@@ -30,7 +31,15 @@
 		width: 700px;
 		height: 600px;
 		margin-left: 35px;
-		margin-right: 30px;
+	}
+	
+	#centerBtnList {
+		float: left;
+		width: 50px;
+		height: 500px;
+		margin-top: 50px;
+		margin-left: 10px;
+		margin-right: 10px;
 	}
 	
 	#rightView {
@@ -60,6 +69,12 @@
 	#update { float:right; width: 80px; font-size: 12pt; text-align: center; margin-right: 5px; }
 	#update:HOVER { background-color: yellow; }
 	
+	#leftViewBtn { height: 40px; margin-top: 200px; text-align: center; }
+	#leftViewBtn:hover { background-color: teal; }
+	
+	#rightViewBtn { height: 40px; text-align: center; }
+	#rightViewBtn:hover { background-color: silver; }
+	
 	#viewComment {
 		height: 330px;
 		line-height: 20px;
@@ -74,11 +89,50 @@
 	}
 	
 	#commentInsert {
-		float: right; width: 80px; font-size: 12pt; text-align: center; margin-right: 10px;
+		float: right; width: 80px; font-size: 12pt; 
+		text-align: center; margin-right: 10px;
 	}
 	#commentInsert:HOVER { background-color: lightgreen; }
 	
 </style>
+<script type="text/javascript">
+		
+	$(document).ready(function(){
+		var i = 2;
+		
+		$("#leftViewBtn").click(function(){
+			if(i==2) {
+				$("#index").css("width", "810px");
+				$("#rightView").css("display", "none");
+				--i;
+			} else if(i==3) {
+				$("#index").css("width", "1540px");
+				$("#rightView").css("display", "");
+				$("#leftView").css("display", "");
+				--i;
+			}
+		});
+		
+		$("#rightViewBtn").click(function(){
+			if(i==1){
+				$("#index").css("width", "1540px");
+				$("#leftView").css("display", "");
+				$("#rightView").css("display", "");
+				++i;
+			} else if(i==2){
+				$("#index").css("width", "810px");
+				$("#leftView").css("display", "none");
+				++i;
+			}
+		});
+		
+		$("#commentInsert").click(function(){
+			alert("댓글을 삽입합니다.");
+		});
+		
+	});
+		
+</script>
 </head>
 <body>
 	<%@ include file="/base/header2.jsp" %> <br />
@@ -110,6 +164,11 @@
 			<input type="text" id="delete" readonly="readonly" placeholder="삭제하기"/>
 	
 		</div>
+		
+		<div id="centerBtnList">
+			<input type="text" id="leftViewBtn" readonly="readonly" placeholder="<<"/>
+			<input type="text" id="rightViewBtn" readonly="readonly" placeholder=">>"/>
+		</div>
 
 		<div id="rightView">
 			<br />
@@ -119,6 +178,32 @@
 			<hr />
 			
 			<div id="viewComment">
+				
+				<div id="commentBody">
+					rockerroom - 2014/07/05 - x<br><br />
+					프로젝트 2년차인데 프로젝트에 관해서 궁금합니다.
+					<hr />
+				</div>
+				<div>
+					rockerroom - 2014/07/05 - x<br><br />
+					프로젝트 2년차인데 프로젝트에 관해서 궁금합니다.
+					<hr />
+				</div>
+				<div>
+					rockerroom - 2014/07/05 - x<br><br />
+					프로젝트 2년차인데 프로젝트에 관해서 궁금합니다.
+					<hr />
+				</div>
+				<div>
+					rockerroom - 2014/07/05 - x<br><br />
+					프로젝트 2년차인데 프로젝트에 관해서 궁금합니다.
+					<hr />
+				</div>
+				<div>
+					rockerroom - 2014/07/05 - x<br><br />
+					프로젝트 2년차인데 프로젝트에 관해서 궁금합니다.
+					<hr />
+				</div>
 				
 			</div>
 			
@@ -142,16 +227,7 @@
 	<br />
 	
 	<%@ include file="/base/footer.jsp" %>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	
 	<script src="/js/foundation.min.js"></script>
-	<script type="text/javascript">
-	
-		$(document).ready(function(){
-			$("#commentInsert").click(function(){
-				alert("댓글을 삽입합니다.");
-			});
-		});
-	
-	</script>
 </body>
 </html>
