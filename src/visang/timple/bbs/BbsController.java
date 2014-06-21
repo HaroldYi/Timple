@@ -20,7 +20,7 @@ public class BbsController {
 	@Resource(name="BbsDAO") // 서비스 이름 가져오기
 	private BbsImpl dao;
 	
-	// 게시판 리스트 불러오기
+	// 게시판 리스트 불러오기s
 	@RequestMapping(value="/bbs/BbsList.vs", method={RequestMethod.GET})
 	public String list(HttpServletRequest req) {
 		
